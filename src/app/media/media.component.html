@@ -1,0 +1,36 @@
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="main-content">
+    <div class="row">
+        <div class="card">
+            <p>media works!</p>
+        </div>
+    </div>
+    <div class="row images__container">
+        <div class="custom__container" *ngFor="let i of numbers">
+            <div class="card">
+                <img src="./../../assets/img/bg5.jpg" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">Image {{i+1}}</h5>
+                    <p class="card-text text-limit">
+                        Some quick example text to build on the card title and make up the
+                        bulk of the card's content.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <div class="actions__buttons">
+                        <span class="material-icons" (click)="openAlert('visibility button clicked')"
+                            title="View Image">visibility</span>
+                        <span class="material-icons" (click)="openAlert('edit button clicked')"
+                            title="Edit Image Detail">edit</span>
+                        <span class="material-icons" (click)="openAlert('delete button clicked')"
+                            title="Delete Image">delete</span>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

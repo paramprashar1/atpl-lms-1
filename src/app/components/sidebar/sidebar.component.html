@@ -1,0 +1,19 @@
+
+<div class="logo text-center">
+    <!-- <a class="simple-text logo-mini">
+      <div class="logo-img">
+          <img src="./assets/img/angular2-logo-white.png"/>
+      </div>
+    </a> -->
+    <a class="simple-text logo-normal">{{title}}</a>
+</div>
+<div class="sidebar-wrapper">
+    <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a [routerLink]="[menuItem.path]" class="d-flex text-center align-items-center">
+                <span class="material-icons mr-3">{{menuItem.icons}}</span>
+                <p class="font-weight-bold">{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
