@@ -41,5 +41,12 @@ export const AdminLayoutRoutes: Routes = [
       {
         path: Utils.ROUTE_MISCELLANOUS,
         component: MiscellanousComponent,
+        children: [
+          {
+            path: '',
+            loadChildren: './../../miscellanous/miscellanous.module#MiscellanousModule',
+            // loadChildren: () => import('./../../miscellanous/miscellanous.module').then(e => e.MiscellanousModule)
+          }
+        ]
       },
 ];

@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="row d-flex align-items-center justify-content-center p-2">
+        <h6 class="col-md-6">Departments</h6>
+        <div class="input-group mb-3 col-md-6 float-right">
+            <input type="text" class="form-control" id="departmentName" name="departmentName"
+                [(ngModel)]="departmentName" placeholder="Department Name" aria-label="Departments"
+                aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary m-0 add" type="button" id="button-addon2"
+                    (click)="pushDataToFirestore()">
+                    <span *ngIf="!updating">Add</span>
+                    <span *ngIf="updating">Update</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="p-0">
+        <table class="table table-striped table-hover table-responsive-lg">
+            <thead class="text-primary text-center">
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Active Status</th>
+                <th>Actions</th>
+            </thead>
+            <tbody class="text-center">
+                <tr *ngFor="let department of miscellanousService.departments; index as i">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ department.name | titlecase }}</td>
+                    <td>
+                        <label class="toggleSwitch nolabel" onclick="">
+                            <input type="checkbox"
+                                (change)="miscellanousService.updateActiveStatus(department.docId, $event.target.checked)"
+                                [value]="department.active" [checked]="department.active" />
+                            <span>
+                                <span>OFF</span>
+                                <span>ON</span>
+                            </span>
+                            <a></a>
+                        </label>
+                    </td>
+                    <td>
+                        <span class="material-icons text-primary mr-2" title="Edit Department Name"
+                            (click)="assignValueToField(department)">edit</span>
+                        <span class="material-icons text-primary" title="Delete Department"
+                            (click)="miscellanousService.deleteData(department.docId)">delete</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- [value]="user.isVerified" [checked]="user.isVerified" -->

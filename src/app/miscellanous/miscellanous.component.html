@@ -3,8 +3,18 @@
 
 <div class="main-content">
     <div class="row">
-        <div class="card">
-            <p>miscellanous works!</p>
+        <div class="card p-2">
+            <ul class="nav nav-pills nav-fill">
+                <li routerLinkActive="active" class="nav-item outline" *ngFor="let route of routesInfo">
+                  <a class="nav-link font__customs" [routerLink]="[route.path]">{{route.title}}</a>
+                </li>
+              </ul>
+            <!-- <p>miscellanous works!</p> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="card p-2">
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>

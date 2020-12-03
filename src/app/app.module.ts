@@ -15,6 +15,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
 import { environment } from './../environments/environment';
+import { MiscellanousService } from './services/miscellanous.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { environment } from './../environments/environment';
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
   ],
-  providers: [],
+  providers: [MiscellanousService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

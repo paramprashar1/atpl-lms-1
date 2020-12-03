@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="row d-flex align-items-center justify-content-center p-2">
+        <h6 class="col-md-6">Roles</h6>
+        <div class="input-group mb-3 col-md-6 float-right">
+            <input type="text" class="form-control" id="roleName" name="roleName"
+                [(ngModel)]="roleName" placeholder="Role" aria-label="roles"
+                aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary m-0 add" type="button" id="button-addon2"
+                    (click)="pushDataToFirestore()">
+                    <span *ngIf="!updating">Add</span>
+                    <span *ngIf="updating">Update</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="p-0">
+        <table class="table table-striped table-hover table-responsive-lg">
+            <thead class="text-primary text-center">
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Active Status</th>
+                <th>Actions</th>
+            </thead>
+            <tbody class="text-center">
+                <tr *ngFor="let role of miscellanousService.roles; index as i">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ role.name | titlecase }}</td>
+                    <td>
+                        <label class="toggleSwitch nolabel" onclick="">
+                            <input type="checkbox"
+                                (change)="miscellanousService.updateActiveStatus(role.docId, $event.target.checked)"
+                                [value]="role.active" [checked]="role.active" />
+                            <span>
+                                <span>OFF</span>
+                                <span>ON</span>
+                            </span>
+                            <a></a>
+                        </label>
+                    </td>
+                    <td>
+                        <span class="material-icons text-primary mr-2" title="Edit role Name"
+                            (click)="assignValueToField(role)">edit</span>
+                        <span class="material-icons text-primary" title="Delete role"
+                            (click)="miscellanousService.deleteData(role.docId)">delete</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- [value]="user.isVerified" [checked]="user.isVerified" -->

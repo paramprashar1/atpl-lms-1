@@ -7,12 +7,13 @@ export class Utils {
     public static COLLECTION_BATCHES = "Batches";
     public static COLLECTION_STUDENTS = "Students";
     public static COLLECTION_SEMESTERS = "Semester";
-    public static COLLECTION_DESIGNATION = "Designations";
-    public static COLLECTION_DEPARTMENT = "Departments";
     public static COLLECTION_ATTENDANCE = "Attendance";
-    public static COLLECTION_Roles = "Roles";
-    public static COLLECTION_STATUS = "Status";
     public static COLLECTION_MEDIA = "Media";
+    public static COLLECTION_MISCELLANEOUS = "Miscellanous";
+    // public static COLLECTION_DESIGNATION = "Designations";
+    // public static COLLECTION_DEPARTMENT = "Departments";
+    // public static COLLECTION_Roles = "Roles";
+    // public static COLLECTION_STATUS = "Status";
     
     // Routes
     public static ROUTE_DASHBOARD = "dashboard";
@@ -22,6 +23,10 @@ export class Utils {
     public static ROUTE_SUBJECTS = 'subjects';
     public static ROUTE_MEDIA = 'media';
     public static ROUTE_MISCELLANOUS = 'miscellanous';
+    public static ROUTE_ROLES = 'roles';
+    public static ROUTE_DEPARTMENTS = 'departments';
+    public static ROUTE_DESIGNATIONS = 'designations';
+    public static ROUTE_STATUS = 'status';
     
     // Labels
     public static LABEL_DASHBOARD = "DASHBOARD";
@@ -31,6 +36,10 @@ export class Utils {
     public static LABEL_SUBJECTS = 'SUBJECTS';
     public static LABEL_MEDIA = 'MEDIA';
     public static LABEL_MISCELLANOUS = 'MISCELLANOUS';
+    public static LABEL_ROLES = 'ROLES';
+    public static LABEL_DEPARTMENTS = 'DEPARTMENTS';
+    public static LABEL_DESIGNATIONS = 'DESIGNATIONS';
+    public static LABEL_STATUS = 'STATUS';
 
     // color hashcodes
     public static COLOR_PRIMARY = "#2A9D8F";
