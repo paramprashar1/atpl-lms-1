@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Miscellanous } from './../../Utils/miscellanous.model';
-import { Utils } from './../../Utils/utils';
+import * as Utils from './../../Utils/utils';
 import { MiscellanousService } from './../../services/miscellanous.service';
 
 @Component({
@@ -22,18 +22,14 @@ export class DesignationsComponent implements OnInit {
 
   ngOnInit(): void {
     if ( this.miscellanousService.designations.length == 0) {
-      this.miscellanousService.getMiscellanousData(1)
+      this.miscellanousService.getMiscellanousDataOnName(1)
         .subscribe(response => { this.miscellanousService.designations = response.map(e => ({ ...e.payload.doc.data() as Miscellanous })) })
     }
   }
 
   pushDataToFirestore() {
     if (this.designationName == null) {
-      this.toast.warning('Required Value', 'Warning', {
-        enableHtml: false,
-        toastClass: "alert w-25",
-        positionClass: 'toast-top-right'
-      })
+      this.toast.warning('Required Value', 'Warning')
     } else {
       let data = {};
       data['name'] = this.designationName.toLowerCase();

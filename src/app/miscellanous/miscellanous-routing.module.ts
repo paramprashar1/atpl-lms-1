@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { Utils } from './../Utils/utils';
+import * as Utils from './../Utils/utils';
 import { DepartmentsComponent } from './departments/departments.component';
 import { DesignationsComponent } from './designations/designations.component';
 import { RolesComponent } from './roles/roles.component';

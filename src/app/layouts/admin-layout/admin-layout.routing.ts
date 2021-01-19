@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Utils } from './../../Utils/utils';
+import * as Utils from './../../Utils/utils';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { BatchesComponent } from '../../batches/batches.component';
 import { MediaComponent } from '../../media/media.component';

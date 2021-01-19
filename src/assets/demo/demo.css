@@ -74,3 +74,19 @@
   max-width: 530px;
   margin: 0 auto;
 }
+
+.addStaffDialog .cdk-global-overlay-wrapper, .cdk-overlay-container {
+  z-index: 99999 !important;
+}
+
+.addStaffDialog .mat-dialog-content {
+  padding: 10px !important;
+}
+
+.mat-horizontal-content-container {
+  padding: 0px;
+}
+
+.mat-spinner circle {
+  stroke: #fff;
+}

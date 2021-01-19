@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Miscellanous } from './../../Utils/miscellanous.model';
-import { Utils } from './../../Utils/utils';
+import * as Utils from './../../Utils/utils';
 import { MiscellanousService } from './../../services/miscellanous.service';
 
 @Component({
@@ -22,18 +22,14 @@ export class RolesComponent implements OnInit {
 
   ngOnInit(): void {
     if ( this.miscellanousService.roles.length == 0) {
-      this.miscellanousService.getMiscellanousData(2)
+      this.miscellanousService.getMiscellanousDataOnCreatedDate(2)
         .subscribe(response => { this.miscellanousService.roles = response.map(e => ({ ...e.payload.doc.data() as Miscellanous })) })
     }
   }
 
   pushDataToFirestore() {
     if (this.roleName == null) {
-      this.toast.warning('Required Value', 'Warning', {
-        enableHtml: false,
-        toastClass: "alert w-25",
-        positionClass: 'toast-top-right'
-      })
+      this.toast.warning('Required Value', 'Warning')
     } else {
       let data = {};
       data['name'] = this.roleName.toLowerCase();

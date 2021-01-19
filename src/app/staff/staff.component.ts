@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddStaffComponent } from '../entriesComponents/add-staff/add-staff.component';
 
 @Component({
   selector: 'app-staff',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaffComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  openModal() {
+    this.dialog.open(AddStaffComponent, {
+      panelClass: "addStaffDialog",
+      hasBackdrop: true,
+    });
   }
 
 }

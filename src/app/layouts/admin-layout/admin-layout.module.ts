@@ -22,7 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
     SubjectsComponent,
     MediaComponent,
     MiscellanousComponent,
-    StaffComponent
+    StaffComponent,
   ],
   imports: [
     CommonModule,

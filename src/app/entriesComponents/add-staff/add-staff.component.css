@@ -1,0 +1,48 @@
+/* .table-reponsive {
+    width: 100%;
+    overflow: auto auto;
+} */
+
+table {
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+table th, table td {
+    width: 100%;
+    padding: 5px;
+}
+
+table::-webkit-scrollbar {
+    height: 7px;
+}
+
+table::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+table::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+table::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

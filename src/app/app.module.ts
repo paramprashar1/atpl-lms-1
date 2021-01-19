@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,29 +14,44 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
-import { environment } from './../environments/environment';
+import { environment as dev } from './../environments/environment';
+import { environment as prod } from './../environments/environment.prod';
 import { MiscellanousService } from './services/miscellanous.service';
+import { MaterialModule } from './material.module';
+import { AddStaffComponent } from './entriesComponents/add-staff/add-staff.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    AddStaffComponent
   ],
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule,
     NgbModule,
-    ToastrModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AppRoutingModule,
+    // AngularFireModule.initializeApp(prod.firebaseConfig),
+    AngularFireModule.initializeApp(dev.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
+    ToastrModule.forRoot({
+      timeOut: 6000,
+      toastClass: 'alert w-25',
+      positionClass: "toast-top-right",
+      preventDuplicates: true,
+      maxOpened: 2,
+    }),
+    MaterialModule,
   ],
+  entryComponents: [AddStaffComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [MiscellanousService],
   bootstrap: [AppComponent]
 })

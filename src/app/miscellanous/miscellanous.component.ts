@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Utils } from './../Utils/utils';
+import * as Utils from './../Utils/utils';
 
 export interface routes {
   path: string;

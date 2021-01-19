@@ -6,13 +6,12 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyDmilRttBBXAMzB6HEouitJ6KK8_Xyz31w",
-    authDomain: "auribises-lms-e99e1.firebaseapp.com",
-    databaseURL: "https://auribises-lms-e99e1.firebaseio.com",
-    projectId: "auribises-lms-e99e1",
-    storageBucket: "auribises-lms-e99e1.appspot.com",
-    messagingSenderId: "174218258288",
-    appId: "1:174218258288:web:9708d5d2ad1436f5fc11b5",
-    measurementId: "G-289S0Y32DF"
+    apiKey: "AIzaSyBAJEiO9IwXgvZyFWvx01W91h35plmv4hM",
+    authDomain: "atpl-lms.firebaseapp.com",
+    projectId: "atpl-lms",
+    storageBucket: "atpl-lms.appspot.com",
+    messagingSenderId: "124887473042",
+    appId: "1:124887473042:web:e3f63d1cc2601652acff4b",
+    measurementId: "G-TJVB47BWBL"
   }
 };

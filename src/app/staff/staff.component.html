@@ -4,7 +4,95 @@
 <div class="main-content">
     <div class="row">
         <div class="card">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat mollitia deleniti ipsam labore ab aspernatur, debitis quos neque nemo vel soluta. Odit sint qui ducimus dolore, ut modi culpa deserunt?</p>
+            <div class="row d-flex align-items-center justify-content-center p-2">
+                <!-- <h6 class="col-12 col-md-6 float-left">Staff</h6> -->
+                <div class="col">
+                    <button mat-button class="btn btn-primary m-0 float-right" (click)="openModal()">Add Staff</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card p-2">
+            <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat mollitia deleniti ipsam labore ab aspernatur, debitis quos neque nemo vel soluta. Odit sint qui ducimus dolore, ut modi culpa deserunt?</p> -->
+            <table class="table table-hover table-responsive-lg">
+                <thead class="text-primary">
+                    <th>
+                        Sr.No <br> 
+                        <span class="table_subHeading2">.</span>
+                    </th>
+                    <th class="d-none d-sm-block">
+                        Profile <br> 
+                        <span class="table_subHeading2">.</span>
+                    </th>
+                    <th>
+                        Name <br> 
+                        <span class="table_subHeading1">Gender</span>
+                    </th>
+                    <th>
+                        Department <br> 
+                        <span class="table_subHeading1">Designation</span>
+                    </th>
+                    <th>
+                        Mobile <br> 
+                        <span class="table_subHeading1">DOB</span>
+                    </th>
+                    <th>
+                        Email <br> 
+                        <span class="table_subHeading1">Password</span>
+                    </th>
+                    <th>
+                        Active <br> 
+                        <span class="table_subHeading2">.</span>
+                    </th>
+                    <th>
+                        Actions <br> 
+                        <span class="table_subHeading2">.</span>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="d-none d-sm-block"><img src="https://www.w3schools.com/howto/img_avatar.png" alt="" style="border-radius: 50%; height: 64px; width: 64px;"></td>
+                        <td>Gurlivleen Singh Kainth <br> <span class="table_subHeading1" style="text-transform: uppercase;">Male</span></td>
+                        <td>Computer Department <br> <span class="table_subHeading1">Professor</span></td>
+                        <td>9874563217 <br> <span class="table_subHeading1">21-07-2000</span></td>
+                        <td>gurlivleen@ex.com <br> <span class="table_subHeading1">xg7488HGF</span></td>
+                        <td>True</td>
+                        <td>
+                            <span class="material-icons text-primary mr-2" title="Edit role Name">edit</span>
+                            <span class="material-icons text-primary" title="Delete role">delete</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="d-none d-sm-block"><img src="https://www.w3schools.com/howto/img_avatar2.png" alt="" style="border-radius: 50%; height: 64px; width: 64px;"></td>
+                        <td>Anmolpreet Kaur <br> <span class="table_subHeading1" style="text-transform: uppercase;">Female</span></td>
+                        <td>Fine Art Department <br> <span class="table_subHeading1">Assistant Professor</span></td>
+                        <td>4569871322 <br> <span class="table_subHeading1">17-10-2005</span></td>
+                        <td>anmol@ex.com <br> <span class="table_subHeading1">84hj6YY4</span></td>
+                        <td>True</td>
+                        <td>
+                            <span class="material-icons text-primary mr-2" title="Edit role Name">edit</span>
+                            <span class="material-icons text-primary" title="Delete role">delete</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="d-none d-sm-block"><img src="https://www.w3schools.com/howto/img_avatar.png" alt="" style="border-radius: 50%; height: 64px; width: 64px;"></td>
+                        <td>Lovish Rajpal <br> <span class="table_subHeading1" style="text-transform: uppercase;">Male</span></td>
+                        <td>Computer Department <br> <span class="table_subHeading1">Professor</span></td>
+                        <td>7896541238 <br> <span class="table_subHeading1">16-01-2000</span></td>
+                        <td>lovishrajpal2000@ex.com <br> <span class="table_subHeading1">xg7488HGF</span></td>
+                        <td>True</td>
+                        <td>
+                            <span class="material-icons text-primary mr-2" title="Edit role Name">edit</span>
+                            <span class="material-icons text-primary" title="Delete role">delete</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

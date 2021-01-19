@@ -1,52 +1,52 @@
-export class Utils {
+export const COMPANY_NAME = 'Auribises Technologies';
 
-    public static COMPANY_NAME = 'Auribises Technologies';
+// export const MAIN = "prod";
+export const MAIN = "dev";
+export const HYPHEN = "-";
 
-    // Collections
-    public static COLLECTION_STAFF = "Staff";
-    public static COLLECTION_BATCHES = "Batches";
-    public static COLLECTION_STUDENTS = "Students";
-    public static COLLECTION_SEMESTERS = "Semester";
-    public static COLLECTION_ATTENDANCE = "Attendance";
-    public static COLLECTION_MEDIA = "Media";
-    public static COLLECTION_MISCELLANEOUS = "Miscellanous";
-    // public static COLLECTION_DESIGNATION = "Designations";
-    // public static COLLECTION_DEPARTMENT = "Departments";
-    // public static COLLECTION_Roles = "Roles";
-    // public static COLLECTION_STATUS = "Status";
-    
-    // Routes
-    public static ROUTE_DASHBOARD = "dashboard";
-    public static ROUTE_STAFF = 'staff';
-    public static ROUTE_BATCHES = 'batches';
-    public static ROUTE_STUDENTS = 'students';
-    public static ROUTE_SUBJECTS = 'subjects';
-    public static ROUTE_MEDIA = 'media';
-    public static ROUTE_MISCELLANOUS = 'miscellanous';
-    public static ROUTE_ROLES = 'roles';
-    public static ROUTE_DEPARTMENTS = 'departments';
-    public static ROUTE_DESIGNATIONS = 'designations';
-    public static ROUTE_STATUS = 'status';
-    
-    // Labels
-    public static LABEL_DASHBOARD = "DASHBOARD";
-    public static LABEL_STAFF = 'STAFF';
-    public static LABEL_BATCHES = 'BATCHES';
-    public static LABEL_STUDENTS = 'STUDENTS';
-    public static LABEL_SUBJECTS = 'SUBJECTS';
-    public static LABEL_MEDIA = 'MEDIA';
-    public static LABEL_MISCELLANOUS = 'MISCELLANOUS';
-    public static LABEL_ROLES = 'ROLES';
-    public static LABEL_DEPARTMENTS = 'DEPARTMENTS';
-    public static LABEL_DESIGNATIONS = 'DESIGNATIONS';
-    public static LABEL_STATUS = 'STATUS';
+// Collections
+export const COLLECTION_STAFF = "staff" + HYPHEN + MAIN;
+export const COLLECTION_BATCHES = "batches" + HYPHEN + MAIN;
+export const COLLECTION_STUDENTS = "students" + HYPHEN + MAIN;
+export const COLLECTION_SEMESTERS = "semester" + HYPHEN + MAIN;
+export const COLLECTION_ATTENDANCE = "attendance" + HYPHEN + MAIN;
+export const COLLECTION_MEDIA = "media" + HYPHEN + MAIN;
+export const COLLECTION_MISCELLANEOUS = "miscellanous" + HYPHEN + MAIN;
+// export const COLLECTION_DESIGNATION = "Designations";
+// export const COLLECTION_DEPARTMENT = "Departments";
+// export const COLLECTION_Roles = "Roles";
+// export const COLLECTION_STATUS = "Status";
 
-    // color hashcodes
-    public static COLOR_PRIMARY = "#2A9D8F";
-    public static COLOR_PRIMARYLIGHT = "#F4A261";
-    public static COLOR_PRIMARYDARK = "#264653";
-    public static COLOR_BG = "#E9C46A";
-    public static COLOR_TEXT = "#E76F51";
-    
-}
+// Routes
+export const ROUTE_DASHBOARD = "dashboard";
+export const ROUTE_STAFF = 'staff';
+export const ROUTE_BATCHES = 'batches';
+export const ROUTE_STUDENTS = 'students';
+export const ROUTE_SUBJECTS = 'subjects';
+export const ROUTE_MEDIA = 'media';
+export const ROUTE_MISCELLANOUS = 'miscellanous';
+export const ROUTE_ROLES = 'roles';
+export const ROUTE_DEPARTMENTS = 'departments';
+export const ROUTE_DESIGNATIONS = 'designations';
+export const ROUTE_STATUS = 'status';
+
+// Labels
+export const LABEL_DASHBOARD = "DASHBOARD";
+export const LABEL_STAFF = 'STAFF';
+export const LABEL_BATCHES = 'BATCHES';
+export const LABEL_STUDENTS = 'STUDENTS';
+export const LABEL_SUBJECTS = 'SUBJECTS';
+export const LABEL_MEDIA = 'MEDIA';
+export const LABEL_MISCELLANOUS = 'MISCELLANOUS';
+export const LABEL_ROLES = 'ROLES';
+export const LABEL_DEPARTMENTS = 'DEPARTMENTS';
+export const LABEL_DESIGNATIONS = 'DESIGNATIONS';
+export const LABEL_STATUS = 'STATUS';
+
+// color hashcodes
+export const COLOR_PRIMARY = "#2A9D8F";
+export const COLOR_PRIMARYLIGHT = "#F4A261";
+export const COLOR_PRIMARYDARK = "#264653";
+export const COLOR_BG = "#E9C46A";
+export const COLOR_TEXT = "#E76F51";
 // https://coolors.co/264653-2a9d8f-e9c46a-f4a261-e76f51

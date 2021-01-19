@@ -17,7 +17,7 @@
     bottom: 0;
     width: 260px;
     left: 0;
-    z-index: 1030;
+    // z-index: 1030;
 
     .sidebar-wrapper{
         position: relative;
@@ -88,7 +88,7 @@
 
             > a{
                 margin: 10px 15px 0;
-                border-radius: $btn-round-radius;
+                // border-radius: $btn-round-radius;
                 color: $white-color;
                 display: block;
                 text-decoration: none;

@@ -6,7 +6,7 @@
                 [(ngModel)]="statusName" placeholder="Status" aria-label="roles"
                 aria-describedby="button-addon2">
             <div class="input-group-append">
-                <button class="btn btn-primary m-0 add" type="button" id="button-addon2"
+                <button class="btn btn-sm btn-primary m-0 add" type="button" id="button-addon2"
                     (click)="pushDataToFirestore()">
                     <span *ngIf="!updating">Add</span>
                     <span *ngIf="updating">Update</span>
