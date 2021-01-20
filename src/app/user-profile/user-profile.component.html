@@ -1,0 +1,251 @@
+<div class="panel-header panel-header-sm">
+</div>
+
+<div class="main-content">
+    <div class="row">
+        <div class="card">
+            <div class="card-header bg-primary text-white p-3">
+                <p style="font-size: large; margin: 0; font-weight: 600;">Personal Information</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <mat-form-field class="col">
+                        <input matInput type="text" name="fname" placeholder="First Name" [(ngModel)]="firstName"
+                            required>
+                    </mat-form-field>
+                    <mat-form-field class="col">
+                        <input matInput type="text" name="lname" placeholder="Last Name" [(ngModel)]="lastName">
+                    </mat-form-field>
+                    <mat-form-field hintLabel="Max 10 characters" class="col">
+                        <input matInput type="text" #mobilee name="mobile" placeholder="Mobile Number"
+                            [(ngModel)]="mobile" required maxlength="10">
+                        <mat-hint align="end">{{mobilee.value?.length || 0}}/10</mat-hint>
+                        <mat-error *ngIf="mobile?.invalid && mobile.touched"></mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="row d-flex justify-content-center align-items-center">
+                    <mat-form-field class="col-12 col-sm-6">
+                        <input matInput type="text" [errorStateMatcher]="matcher" name="email"
+                            placeholder="Email (example@gmail.com)" [(ngModel)]="email" required>
+                        <mat-error *ngIf="email?.invalid && email.errors.required">Email Required</mat-error>
+                    </mat-form-field>
+                    <!-- <mat-form-field class="col-12 col-sm-4">
+                        <input matInput type="text" name="Password" placeholder="Password" [(ngModel)]="password"
+                            [disabled]="email == undefined || email == ''">
+                        <button mat-icon-button matSuffix (click)="passGen()"
+                            [disabled]="email == undefined || email == ''">
+                            <mat-icon style="font-size: 20px;">vpn_key</mat-icon>
+                        </button>
+                    </mat-form-field> -->
+                    <div class="col-12 col-sm-6">
+                        <input type="file" name="profileImage" id="profileImage" accept="image/*"
+                            (change)="addProfileImage($event)">
+                    </div>
+                </div>
+                <div class="row">
+                    <mat-form-field class="col">
+                        <mat-label>Select Salutation</mat-label>
+                        <mat-select name="salutation" [(ngModel)]="salutation">
+                            <mat-option [value]=0>Dr</mat-option>
+                            <mat-option [value]=1>Mr</mat-option>
+                            <mat-option [value]=2>Ms</mat-option>
+                            <mat-option [value]=3>Mrs</mat-option>
+                            <mat-option [value]=4>Prof</mat-option>
+                            <mat-option [value]=5>Er</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="col">
+                        <mat-label>Select Gender</mat-label>
+                        <mat-select name="gender" [(ngModel)]="gender">
+                            <mat-option [value]=0>Male</mat-option>
+                            <mat-option [value]=1>Female</mat-option>
+                            <mat-option [value]=2>Others</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="col">
+                        <mat-label>Date of Birth</mat-label>
+                        <input matInput [matDatepicker]="picker2"
+                            [ngModel]="birthDate?.seconds * 1000 | date: 'yyyy-MM-dd'" (ngModelChanges)="birthDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field class="col">
+                        <mat-label>Select Role</mat-label>
+                        <mat-select name="role" [(ngModel)]="role">
+                            <mat-option *ngFor="let role of miscs.roles; index as idx" [value]="idx">{{ role.name |
+                                titlecase }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="col">
+                        <mat-label>Select Department</mat-label>
+                        <mat-select name="department" [disabled]="role != 1 && role != undefined"
+                            [(ngModel)]="department">
+                            <mat-option *ngFor="let dept of miscs.departments" [value]="dept.name">{{ dept.name |
+                                titlecase }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="col">
+                        <mat-label>Select Designation</mat-label>
+                        <mat-select name="designation" [disabled]="role != 1 && role != undefined"
+                            [(ngModel)]="designation">
+                            <mat-option *ngFor="let des of miscs.designations" [value]="des.name">{{ des.name |
+                                titlecase }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field class="col">
+                        <mat-label>Address</mat-label>
+                        <textarea matInput name="address" [(ngModel)]="address"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row p-1">
+                    <div class="col">
+                        <button mat-button class="btn btn-lg float-right" (click)="updatePersonsalInformation()"
+                            style="background: #2A9D8F; color: white; display: flex; justify-content: space-evenly; align-items: center;">
+                            Update
+                            <mat-icon *ngIf="personalInformationLoader">
+                                <mat-spinner diameter="24"></mat-spinner>
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-header bg-primary text-white p-3">
+                <div class="row w-100 align-items-center justify-content-center">
+                    <p class="col" style="font-size: large; margin: 0; font-weight: 600;">Qualification</p>
+                    <div class="col">
+                        <button mat-icon-button class="pull-right" (click)="addQualification()">
+                            <mat-icon style="font-size: 28px; color: white;">add</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr *ngFor="let quall of qualifications; index as i">
+                        <td>
+                            <mat-form-field>
+                                <mat-label>Qualification Name</mat-label>
+                                <input matInput type="text" name="qualificationName"
+                                    [(ngModel)]="quall['qualificationName']">
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <mat-label>Qualification Year</mat-label>
+                                <input matInput type="text" name="qualificationName"
+                                    [(ngModel)]="quall['qualificationYear']">
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <input class="mt-3" type="file" (change)="addQualImage($event, i)" id="{{ 'img' + i }}">
+                        </td>
+                        <td class="text-center">
+                            <button mat-icon-button (click)="removeQualification(i)">
+                                <mat-icon style="color: red;">delete</mat-icon>
+                            </button>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="card-footer">
+                <div class="row p-1">
+                    <div class="col">
+                        <button mat-button class="btn btn-lg float-right" (click)="updateQualification()"
+                            style="background: #2A9D8F; color: white; display: flex; justify-content: space-evenly; align-items: center;">
+                            Update
+                            <mat-icon *ngIf="qualificationLoader">
+                                <mat-spinner diameter="24"></mat-spinner>
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-header bg-primary text-white p-3">
+                <div class="row w-100 align-items-center justify-content-center">
+                    <p class="col" style="font-size: large; margin: 0; font-weight: 600;">Experiences</p>
+                    <div class="col">
+                        <button mat-icon-button class="pull-right" (click)="addExperience()">
+                            <mat-icon style="font-size: 28px; color: white;">add</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tr *ngFor="let exp of experiences; index as i">
+                        <td>
+                            <!-- <span style="font-size: smaller;"></span> <br> -->
+                            <mat-checkbox class="mt-3" [(ngModel)]="exp['currentOccupation']">Currently Working
+                            </mat-checkbox>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <mat-label>Organisation Name</mat-label>
+                                <input matInput type="text" name="experienceName" [(ngModel)]="exp['experienceName']">
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <mat-label>Choose Start Date</mat-label>
+                                <input matInput [matDatepicker]="picker"
+                                    [ngModel]="exp.startDate?.seconds * 1000 | date: 'yyyy-MM-dd'"
+                                    (ngModelChanges)="exp['startDate']">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field>
+                                <mat-label>Choose End Date</mat-label>
+                                <input matInput [matDatepicker]="picker1"
+                                    [ngModel]="exp.endDate?.seconds * 1000 | date: 'yyyy-MM-dd'"
+                                    (ngModelChanges)="exp['endDate']" [disabled]="exp['currentOccupation']">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <input class="mt-3" type="file" (change)="addExpImage($event, i)" id="{{ 'exp' + i }}">
+                        </td>
+                        <td class="text-center">
+                            <button mat-button (click)="removeExperience(i)">
+                                <mat-icon style="color: red;">delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="card-footer">
+                <div class="row p-1">
+                    <div class="col">
+                        <button mat-button class="btn btn-lg float-right" (click)="updateExperiences()"
+                            style="background: #2A9D8F; color: white; display: flex; justify-content: space-evenly; align-items: center;">
+                            Update
+                            <mat-icon *ngIf="experiencesLoader">
+                                <mat-spinner diameter="24"></mat-spinner>
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

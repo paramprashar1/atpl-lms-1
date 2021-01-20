@@ -29,6 +29,7 @@ export const ROUTE_ROLES = 'roles';
 export const ROUTE_DEPARTMENTS = 'departments';
 export const ROUTE_DESIGNATIONS = 'designations';
 export const ROUTE_STATUS = 'status';
+export const ROUTE_USERPROFILE = 'user-profile';
 
 // Labels
 export const LABEL_DASHBOARD = "DASHBOARD";

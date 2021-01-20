@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +13,8 @@ import { SubjectsComponent } from '../../subjects/subjects.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
+import { MaterialModule } from '../../material.module';
+import { UserProfileComponent } from '../../user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
     MediaComponent,
     MiscellanousComponent,
     StaffComponent,
+    UserProfileComponent
   ],
   imports: [
     CommonModule,
@@ -30,8 +33,10 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ChartsModule,
     NgbModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MaterialModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class AdminLayoutModule {}

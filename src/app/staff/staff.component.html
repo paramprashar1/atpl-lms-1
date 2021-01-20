@@ -7,7 +7,7 @@
             <div class="row d-flex align-items-center justify-content-center p-2">
                 <!-- <h6 class="col-12 col-md-6 float-left">Staff</h6> -->
                 <div class="col">
-                    <button mat-button class="btn btn-primary m-0 float-right" (click)="openModal()">Add Staff</button>
+                    <button mat-button class="default m-0 float-right no-hover-effect" (click)="openModal()">Add Staff</button>
                 </div>
 
             </div>
@@ -52,43 +52,25 @@
                     </th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td class="d-none d-sm-block"><img src="https://www.w3schools.com/howto/img_avatar.png" alt="" style="border-radius: 50%; height: 64px; width: 64px;"></td>
-                        <td>Gurlivleen Singh Kainth <br> <span class="table_subHeading1" style="text-transform: uppercase;">Male</span></td>
-                        <td>Computer Department <br> <span class="table_subHeading1">Professor</span></td>
-                        <td>9874563217 <br> <span class="table_subHeading1">21-07-2000</span></td>
-                        <td>gurlivleen@ex.com <br> <span class="table_subHeading1">xg7488HGF</span></td>
-                        <td>True</td>
-                        <td>
-                            <span class="material-icons text-primary mr-2" title="Edit role Name">edit</span>
-                            <span class="material-icons text-primary" title="Delete role">delete</span>
+                    <tr *ngFor="let user of users; index as idx">
+                        <td>{{ idx + 1 }}</td>
+                        <td class="d-none d-sm-block">
+                            <a type="button" (click)="viewImage(user.profileImage)">
+                                <img [src]="user.profileImage != '' ? user.profileImage : !user.gender ? 'https://www.w3schools.com/howto/img_avatar.png' : 'https://www.w3schools.com/howto/img_avatar2.png'" alt="" style="border-radius: 50%; height: 64px; width: 64px;">
+                            </a>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td class="d-none d-sm-block"><img src="https://www.w3schools.com/howto/img_avatar2.png" alt="" style="border-radius: 50%; height: 64px; width: 64px;"></td>
-                        <td>Anmolpreet Kaur <br> <span class="table_subHeading1" style="text-transform: uppercase;">Female</span></td>
-                        <td>Fine Art Department <br> <span class="table_subHeading1">Assistant Professor</span></td>
-                        <td>4569871322 <br> <span class="table_subHeading1">17-10-2005</span></td>
-                        <td>anmol@ex.com <br> <span class="table_subHeading1">84hj6YY4</span></td>
+                        <td>{{ user.fname | titlecase }} {{ user.lname | titlecase }}<br> <span class="table_subHeading1" style="text-transform: uppercase;">{{ !user.gender ? "Male" : "Female" }}</span></td>
+                        <td>{{ user.department | titlecase }} <br> <span class="table_subHeading1">{{ user.designation | titlecase }}</span></td>
+                        <td>{{ user.mobile }} <br> <span class="table_subHeading1">{{ user.birthDate.toDate() | date: 'dd-MM-yyyy' }}</span></td>
+                        <td>{{ user.email }} <br> <span class="table_subHeading1">{{ user.password }}</span></td>
                         <td>True</td>
                         <td>
-                            <span class="material-icons text-primary mr-2" title="Edit role Name">edit</span>
-                            <span class="material-icons text-primary" title="Delete role">delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td class="d-none d-sm-block"><img src="https://www.w3schools.com/howto/img_avatar.png" alt="" style="border-radius: 50%; height: 64px; width: 64px;"></td>
-                        <td>Lovish Rajpal <br> <span class="table_subHeading1" style="text-transform: uppercase;">Male</span></td>
-                        <td>Computer Department <br> <span class="table_subHeading1">Professor</span></td>
-                        <td>7896541238 <br> <span class="table_subHeading1">16-01-2000</span></td>
-                        <td>lovishrajpal2000@ex.com <br> <span class="table_subHeading1">xg7488HGF</span></td>
-                        <td>True</td>
-                        <td>
-                            <span class="material-icons text-primary mr-2" title="Edit role Name">edit</span>
-                            <span class="material-icons text-primary" title="Delete role">delete</span>
+                            <button mat-icon-button class="text-primary" title="Update Details" (click)="showUpdateUser(user.docId)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button (click)="openDeleteModal(user.docId)" title="Delete User">
+                                <mat-icon style="color: red;">delete</mat-icon>
+                            </button>
                         </td>
                     </tr>
                 </tbody>

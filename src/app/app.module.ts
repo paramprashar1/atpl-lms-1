@@ -19,12 +19,16 @@ import { environment as prod } from './../environments/environment.prod';
 import { MiscellanousService } from './services/miscellanous.service';
 import { MaterialModule } from './material.module';
 import { AddStaffComponent } from './entriesComponents/add-staff/add-staff.component';
+import { DeleteModalComponent } from './entriesComponents/delete-modal/delete-modal.component';
+import { ViewImageModalComponent } from './entriesComponents/view-image-modal/view-image-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AddStaffComponent
+    AddStaffComponent,
+    DeleteModalComponent,
+    ViewImageModalComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -50,7 +54,11 @@ import { AddStaffComponent } from './entriesComponents/add-staff/add-staff.compo
     }),
     MaterialModule,
   ],
-  entryComponents: [AddStaffComponent],
+  entryComponents: [
+    AddStaffComponent,
+    DeleteModalComponent,
+    ViewImageModalComponent
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [MiscellanousService],
   bootstrap: [AppComponent]

@@ -1,0 +1,26 @@
+.table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+
+td, td>mat-form-field {
+    width: 100%;
+    padding: 6px;
+}
+
+table::-webkit-scrollbar {
+    height: 7px;
+}
+
+table::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+table::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+table::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

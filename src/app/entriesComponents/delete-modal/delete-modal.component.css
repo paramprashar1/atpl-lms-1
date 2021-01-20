@@ -1,0 +1,37 @@
+.dialogContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.dialogContent>img {
+    object-fit: contain;
+    width: 128px;
+    height: 128px;
+    margin-bottom: 20px;
+}
+
+.dialogContent>h3 {
+    font-weight: 700;
+    font-size: 24px;
+    margin: 5px;
+}
+
+.dialogContent>p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.buttonRow {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.buttonRow>button {
+    width: 100%;
+}
