@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as Utils from './../Utils/utils';
+import * as _utils from './../Utils/utils';
 
 export interface routes {
   path: string;
@@ -7,10 +7,10 @@ export interface routes {
 }
 
 export const childRoutes: routes[] = [
-  { path: Utils.ROUTE_DEPARTMENTS, title: Utils.LABEL_DEPARTMENTS },
-  { path: Utils.ROUTE_DESIGNATIONS, title: Utils.LABEL_DESIGNATIONS },
-  { path: Utils.ROUTE_ROLES, title: Utils.LABEL_ROLES },
-  { path: Utils.ROUTE_STATUS, title: Utils.LABEL_STATUS },
+  { path: _utils.ROUTE_DEPARTMENTS, title: _utils.LABEL_DEPARTMENTS },
+  { path: _utils.ROUTE_DESIGNATIONS, title: _utils.LABEL_DESIGNATIONS },
+  { path: _utils.ROUTE_ROLES, title: _utils.LABEL_ROLES },
+  { path: _utils.ROUTE_STATUS, title: _utils.LABEL_STATUS },
 ];
 
 @Component({

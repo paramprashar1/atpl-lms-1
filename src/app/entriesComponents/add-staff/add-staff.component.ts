@@ -8,7 +8,7 @@ import { Qualification } from '../../Utils/qualification.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
-import * as Utils from '../../Utils/utils';
+import * as _utils from '../../Utils/utils';
 import { ToastrService } from 'ngx-toastr';
 import { async } from '@angular/core/testing';
 
@@ -196,7 +196,7 @@ export class AddStaffComponent implements OnInit {
         };
         console.log(userObject);
         
-        this.dbRef.collection(Utils.MAIN).doc(Utils.MAIN).collection(Utils.COLLECTION_STAFF).doc(documentId)
+        this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_STAFF).doc(documentId)
           .set(userObject, { merge: true })
           .then(() => this.toast.success("Staff Added", "Successfully"));
         this.loading = false;
@@ -215,7 +215,7 @@ export class AddStaffComponent implements OnInit {
     if (this.profileImage != undefined) {
       const file = this.profileImage;
       const fileName = this.profileImage.name;
-      const path = "staffs/" + docId + "/profileImage";
+      const path = _utils.ROUTE_STAFF + "/" + docId + "/profileImage";
       const storageRef = this.storageRef.ref(path);
       const upload = this.storageRef.upload(path, file);
 
@@ -229,7 +229,7 @@ export class AddStaffComponent implements OnInit {
     if (this.qualifications != undefined) {
       for (let qual of this.qualifications) {
         const file = qual.certificate;
-        const path = "staffs/" + docId + "/qualifications/" + qual.certificate.name;
+        const path = _utils.ROUTE_STAFF + "/" + docId + "/" + _utils.ROUTE_QUALIFICATION + "/" + qual.certificate.name;
         const storageRef = this.storageRef.ref(path);
         const upload = this.storageRef.upload(path, file);
 
@@ -245,7 +245,7 @@ export class AddStaffComponent implements OnInit {
     if (this.experiences != undefined) {
       for (let qual of this.experiences) {
         const file = qual.certificate;
-        const path = "staffs/" + docId + "/experiences/" + qual.certificate.name;
+        const path = _utils.ROUTE_STAFF + "/" + docId + "/" + _utils.ROUTE_EXPERIENCES+ "/" + qual.certificate.name;
         const storageRef = this.storageRef.ref(path);
         const upload = this.storageRef.upload(path, file);
         await upload.snapshotChanges().pipe().toPromise().then(() => {

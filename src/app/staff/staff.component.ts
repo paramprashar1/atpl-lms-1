@@ -7,7 +7,7 @@ import { DeleteModalComponent } from '../entriesComponents/delete-modal/delete-m
 import { ViewImageModalComponent } from '../entriesComponents/view-image-modal/view-image-modal.component';
 import { MiscellanousService } from '../services/miscellanous.service';
 import { Staff } from '../Utils/staff.model';
-import * as Utils from './../Utils/utils';
+import * as _utils from './../Utils/utils';
 
 @Component({
   selector: 'app-staff',
@@ -25,7 +25,7 @@ export class StaffComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dbRef.collection(Utils.MAIN).doc(Utils.MAIN).collection(Utils.COLLECTION_STAFF)
+    this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_STAFF)
       .snapshotChanges()
       .subscribe(response => {
         this.users = response.map(e => ({ ...e.payload.doc.data() as Staff}));
@@ -45,7 +45,7 @@ export class StaffComponent implements OnInit {
     this.dialog.open(DeleteModalComponent, {
       data: {
         docId: docId,
-        collection: Utils.COLLECTION_STAFF
+        collection: _utils.COLLECTION_STAFF
       },
       width: '400px',
       panelClass: 'deleteModal'
@@ -53,7 +53,7 @@ export class StaffComponent implements OnInit {
   }
 
   showUpdateUser(docId) {
-    this.router.navigate([Utils.ROUTE_USERPROFILE, docId]);
+    this.router.navigate([_utils.ROUTE_USERPROFILE, docId]);
   }
 
   viewImage(url) {

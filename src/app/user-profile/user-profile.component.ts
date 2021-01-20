@@ -7,7 +7,7 @@ import { MiscellanousService } from '../services/miscellanous.service';
 import { Experience } from '../Utils/experience.model';
 import { Qualification } from '../Utils/qualification.model';
 import { Staff } from '../Utils/staff.model';
-import * as Utils from './../Utils/utils';
+import * as _utils from './../Utils/utils';
 import * as moment from 'moment';
 import { MatTableDataSource } from '@angular/material/table';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -60,7 +60,7 @@ export class UserProfileComponent implements OnInit {
     this.router.params.subscribe(res => {
       this.documentId = res['docId'];
     });
-    this.dbRef.collection(`${Utils.MAIN}/${Utils.MAIN}/${Utils.COLLECTION_STAFF}`).doc(this.documentId)
+    this.dbRef.collection(`${_utils.MAIN}/${_utils.MAIN}/${_utils.COLLECTION_STAFF}`).doc(this.documentId)
       .snapshotChanges()
       .subscribe(val => {
         this.user = val.payload.data() as Staff;
@@ -88,7 +88,7 @@ export class UserProfileComponent implements OnInit {
     this.personalInformationLoader = true;
     if(this.profileImage != undefined) {
       const file = this.profileImage;
-      const path = "staffs/" + this.documentId + "/profileImage";
+      const path = _utils.ROUTE_STAFF + "/" + this.documentId + "/profileImage";
       const storageRef = this.storageRef.ref(path);
       const upload = this.storageRef.upload(path, file);
 
@@ -99,7 +99,7 @@ export class UserProfileComponent implements OnInit {
       })
     }
 
-    this.dbRef.collection(`${Utils.MAIN}/${Utils.MAIN}/${Utils.COLLECTION_STAFF}`).doc(this.documentId)
+    this.dbRef.collection(`${_utils.MAIN}/${_utils.MAIN}/${_utils.COLLECTION_STAFF}`).doc(this.documentId)
       .update({
         fname: this.firstName.toLowerCase(),
         lname: this.lastName?.toLocaleLowerCase() || "",
@@ -155,7 +155,7 @@ export class UserProfileComponent implements OnInit {
         }
       } else {
         const file = qual.certificate;
-        const path = "staffs/" + this.documentId + "/qualifications/" + qual.certificate.name;
+        const path = _utils.ROUTE_STAFF + "/" + this.documentId + "/" + _utils.ROUTE_QUALIFICATION + "/" + qual.certificate.name;
         const storageRef = this.storageRef.ref(path);
         const upload = this.storageRef.upload(path, file);
 
@@ -173,7 +173,7 @@ export class UserProfileComponent implements OnInit {
       }
     }
 
-    this.dbRef.collection(`${Utils.MAIN}/${Utils.MAIN}/${Utils.COLLECTION_STAFF}`).doc(this.documentId)
+    this.dbRef.collection(`${_utils.MAIN}/${_utils.MAIN}/${_utils.COLLECTION_STAFF}`).doc(this.documentId)
       .update({
         qualifications: finalQual,
         updatedOn: new Date()
@@ -220,7 +220,7 @@ export class UserProfileComponent implements OnInit {
         }
       } else {
         const file = exp.certificate;
-        const path = "staffs/" + this.documentId + "/experiences/" + exp.certificate.name;
+        const path = _utils.ROUTE_STAFF + "/" + this.documentId + "/" + _utils.ROUTE_EXPERIENCES+ "/" + exp.certificate.name;
         const storageRef = this.storageRef.ref(path);
         const upload = this.storageRef.upload(path, file);
 
@@ -240,7 +240,7 @@ export class UserProfileComponent implements OnInit {
       }
     }
 
-    this.dbRef.collection(`${Utils.MAIN}/${Utils.MAIN}/${Utils.COLLECTION_STAFF}`).doc(this.documentId)
+    this.dbRef.collection(`${_utils.MAIN}/${_utils.MAIN}/${_utils.COLLECTION_STAFF}`).doc(this.documentId)
       .update({
         experiences: finalExperiences,
         updatedOn: new Date()

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import * as Utils from './../Utils/utils';
+import * as _utils from './../Utils/utils';
 import { DepartmentsComponent } from './departments/departments.component';
 import { DesignationsComponent } from './designations/designations.component';
 import { RolesComponent } from './roles/roles.component';
@@ -10,22 +10,22 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: Utils.ROUTE_DEPARTMENTS
+    redirectTo: _utils.ROUTE_DEPARTMENTS
   },
   {
-    path: Utils.ROUTE_DEPARTMENTS,
+    path: _utils.ROUTE_DEPARTMENTS,
     component: DepartmentsComponent
   },
   {
-    path: Utils.ROUTE_DESIGNATIONS,
+    path: _utils.ROUTE_DESIGNATIONS,
     component: DesignationsComponent
   },
   {
-    path: Utils.ROUTE_ROLES,
+    path: _utils.ROUTE_ROLES,
     component: RolesComponent
   },
   {
-    path: Utils.ROUTE_STATUS,
+    path: _utils.ROUTE_STATUS,
     component: StatusComponent
   },
 ];

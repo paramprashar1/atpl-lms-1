@@ -19,7 +19,7 @@ export const COLLECTION_MISCELLANEOUS = "miscellanous" + HYPHEN + MAIN;
 
 // Routes
 export const ROUTE_DASHBOARD = "dashboard";
-export const ROUTE_STAFF = 'staff';
+export const ROUTE_STAFF = 'staffs';
 export const ROUTE_BATCHES = 'batches';
 export const ROUTE_STUDENTS = 'students';
 export const ROUTE_SUBJECTS = 'subjects';
@@ -30,6 +30,8 @@ export const ROUTE_DEPARTMENTS = 'departments';
 export const ROUTE_DESIGNATIONS = 'designations';
 export const ROUTE_STATUS = 'status';
 export const ROUTE_USERPROFILE = 'user-profile';
+export const ROUTE_QUALIFICATION = 'qualifications';
+export const ROUTE_EXPERIENCES = 'experiences';
 
 // Labels
 export const LABEL_DASHBOARD = "DASHBOARD";

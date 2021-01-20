@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as Utils from './../../Utils/utils';
+import * as _utils from './../../Utils/utils';
 
 declare interface RouteInfo {
   path: string;
@@ -8,13 +8,13 @@ declare interface RouteInfo {
   class: string;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: `/${Utils.ROUTE_DASHBOARD}`, title: Utils.LABEL_DASHBOARD, icons: 'dashboard', class: '' },
-  { path: `/${Utils.ROUTE_STAFF}`, title: Utils.LABEL_STAFF, icons: 'person', class: '' },
-  { path: `/${Utils.ROUTE_STUDENTS}`, title: Utils.LABEL_STUDENTS, icons: 'groups', class: '' },
-  { path: `/${Utils.ROUTE_BATCHES}`, title: Utils.LABEL_BATCHES, icons: 'school', class: '' },
-  { path: `/${Utils.ROUTE_SUBJECTS}`, title: Utils.LABEL_SUBJECTS, icons: 'subject', class: '' },
-  { path: `/${Utils.ROUTE_MEDIA}`, title: Utils.LABEL_MEDIA, icons: 'perm_media', class: '' },
-  { path: `/${Utils.ROUTE_MISCELLANOUS}`, title: Utils.LABEL_MISCELLANOUS, icons: 'miscellaneous_services', class: '' },
+  { path: `/${_utils.ROUTE_DASHBOARD}`, title: _utils.LABEL_DASHBOARD, icons: 'dashboard', class: '' },
+  { path: `/${_utils.ROUTE_STAFF}`, title: _utils.LABEL_STAFF, icons: 'person', class: '' },
+  { path: `/${_utils.ROUTE_STUDENTS}`, title: _utils.LABEL_STUDENTS, icons: 'groups', class: '' },
+  { path: `/${_utils.ROUTE_BATCHES}`, title: _utils.LABEL_BATCHES, icons: 'school', class: '' },
+  { path: `/${_utils.ROUTE_SUBJECTS}`, title: _utils.LABEL_SUBJECTS, icons: 'subject', class: '' },
+  { path: `/${_utils.ROUTE_MEDIA}`, title: _utils.LABEL_MEDIA, icons: 'perm_media', class: '' },
+  { path: `/${_utils.ROUTE_MISCELLANOUS}`, title: _utils.LABEL_MISCELLANOUS, icons: 'miscellaneous_services', class: '' },
 ];
 
 @Component({
@@ -24,7 +24,7 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-  title = Utils.COMPANY_NAME;
+  title = _utils.COMPANY_NAME;
 
   constructor() { }
 

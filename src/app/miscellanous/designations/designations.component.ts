@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Miscellanous } from './../../Utils/miscellanous.model';
-import * as Utils from './../../Utils/utils';
+import * as _utils from './../../Utils/utils';
 import { MiscellanousService } from './../../services/miscellanous.service';
 
 @Component({
@@ -39,7 +39,7 @@ export class DesignationsComponent implements OnInit {
         data['createdOn'] = new Date();
         data['updatedOn'] = new Date();
         data['active'] = true;
-        this.miscellanousService.checkDuplicateRecord(Utils.COLLECTION_MISCELLANEOUS, 'name', data['name'])
+        this.miscellanousService.checkDuplicateRecord(_utils.COLLECTION_MISCELLANEOUS, 'name', data['name'])
         .then(response => {
           if (response.size == 0) {
             this.miscellanousService.addMiscellanousDataToFirestore(data);

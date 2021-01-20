@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Miscellanous } from '../Utils/miscellanous.model';
-import * as Utils from '../Utils/utils';
+import * as _utils from '../Utils/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -37,12 +37,12 @@ export class MiscellanousService {
   getDocId = () => (this.dbRef.createId());
 
   checkDuplicateRecord(collectionName: string, key: any, value: any) {
-    return this.dbRef.collection(Utils.MAIN).doc(Utils.MAIN).collection(collectionName, ref => ref.where(key, '==', value))
+    return this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(collectionName, ref => ref.where(key, '==', value))
       .get().toPromise();
   }
 
   addMiscellanousDataToFirestore(data) {
-    this.dbRef.collection(Utils.MAIN).doc(Utils.MAIN).collection(Utils.COLLECTION_MISCELLANEOUS)
+    this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_MISCELLANEOUS)
       .doc(data.docId)
       .set(data, { merge: true })
       .then(() => this.toast.success('Changes Done', 'Success'))
@@ -50,7 +50,7 @@ export class MiscellanousService {
   }
 
   deleteData(docId) {
-    this.dbRef.collection(Utils.MAIN).doc(Utils.MAIN).collection(Utils.COLLECTION_MISCELLANEOUS)
+    this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_MISCELLANEOUS)
       .doc(docId)
       .delete()
       .then(() => this.toast.success('', 'Deleted Successfully'))
@@ -58,7 +58,7 @@ export class MiscellanousService {
   }
 
   updateActiveStatus(docId, status) {
-    this.dbRef.collection(Utils.MAIN).doc(Utils.MAIN).collection(Utils.COLLECTION_MISCELLANEOUS)
+    this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_MISCELLANEOUS)
       .doc(docId)
       .update({ active: status })
       .then(() => this.toast.success('Active Status Updated', 'Success'))
@@ -66,10 +66,10 @@ export class MiscellanousService {
   }
 
   getMiscellanousDataOnCreatedDate(type: number): any {
-    return this.dbRef.collection(Utils.MAIN).doc(Utils.MAIN).collection(Utils.COLLECTION_MISCELLANEOUS, ref => ref.where('type', '==', type).orderBy('createdOn', 'asc')).snapshotChanges();
+    return this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_MISCELLANEOUS, ref => ref.where('type', '==', type).orderBy('createdOn', 'asc')).snapshotChanges();
   }
 
   getMiscellanousDataOnName(type: number): any {
-    return this.dbRef.collection(Utils.MAIN).doc(Utils.MAIN).collection(Utils.COLLECTION_MISCELLANEOUS, ref => ref.where('type', '==', type).orderBy('name', 'asc')).snapshotChanges();
+    return this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_MISCELLANEOUS, ref => ref.where('type', '==', type).orderBy('name', 'asc')).snapshotChanges();
   }
 }
