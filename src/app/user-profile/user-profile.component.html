@@ -74,16 +74,17 @@
                     <mat-form-field class="col">
                         <mat-label>Select Role</mat-label>
                         <mat-select name="role" [(ngModel)]="role">
-                            <mat-option *ngFor="let role of miscs.roles; index as idx" [value]="idx">{{ role.name |
-                                titlecase }}</mat-option>
+                            <mat-option *ngFor="let role of miscs.roles; index as idx" [value]="idx">
+                                {{ role.name | titlecase }}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field class="col">
                         <mat-label>Select Department</mat-label>
                         <mat-select name="department" [disabled]="role != 1 && role != undefined"
                             [(ngModel)]="department">
-                            <mat-option *ngFor="let dept of miscs.departments" [value]="dept.name">{{ dept.name |
-                                titlecase }}
+                            <mat-option *ngFor="let dept of miscs.departments" [value]="dept.name">
+                                {{ dept.name | titlecase }}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -91,8 +92,8 @@
                         <mat-label>Select Designation</mat-label>
                         <mat-select name="designation" [disabled]="role != 1 && role != undefined"
                             [(ngModel)]="designation">
-                            <mat-option *ngFor="let des of miscs.designations" [value]="des.name">{{ des.name |
-                                titlecase }}
+                            <mat-option *ngFor="let des of miscs.designations" [value]="des.name">
+                                {{ des.name | titlecase }}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
@@ -107,8 +108,7 @@
             <div class="card-footer">
                 <div class="row p-1">
                     <div class="col">
-                        <button mat-button class="btn btn-lg float-right" (click)="updatePersonsalInformation()"
-                            style="background: #2A9D8F; color: white; display: flex; justify-content: space-evenly; align-items: center;">
+                        <button mat-button class="float-right defaultBtnSpinner no-hover-effect" (click)="updatePersonsalInformation()">
                             Update
                             <mat-icon *ngIf="personalInformationLoader">
                                 <mat-spinner diameter="24"></mat-spinner>
@@ -163,8 +163,7 @@
             <div class="card-footer">
                 <div class="row p-1">
                     <div class="col">
-                        <button mat-button class="btn btn-lg float-right" (click)="updateQualification()"
-                            style="background: #2A9D8F; color: white; display: flex; justify-content: space-evenly; align-items: center;">
+                        <button mat-button class="float-right defaultBtnSpinner no-hover-effect" (click)="updateQualification()">
                             Update
                             <mat-icon *ngIf="qualificationLoader">
                                 <mat-spinner diameter="24"></mat-spinner>
@@ -192,7 +191,7 @@
                     <tr *ngFor="let exp of experiences; index as i">
                         <td>
                             <!-- <span style="font-size: smaller;"></span> <br> -->
-                            <mat-checkbox class="mt-3" [(ngModel)]="exp['currentOccupation']">Currently Working
+                            <mat-checkbox class="mt-3" color="primary" [(ngModel)]="exp['currentOccupation']">Currently Working
                             </mat-checkbox>
                         </td>
                         <td>
@@ -236,8 +235,7 @@
             <div class="card-footer">
                 <div class="row p-1">
                     <div class="col">
-                        <button mat-button class="btn btn-lg float-right" (click)="updateExperiences()"
-                            style="background: #2A9D8F; color: white; display: flex; justify-content: space-evenly; align-items: center;">
+                        <button mat-button class="float-right defaultBtnSpinner no-hover-effect" (click)="updateExperiences()">
                             Update
                             <mat-icon *ngIf="experiencesLoader">
                                 <mat-spinner diameter="24"></mat-spinner>

@@ -138,7 +138,8 @@ export class AddStaffComponent implements OnInit {
       for (let qual of this.qualifications) {
         if (qual.qualificationName == "" || qual.qualificationYear == "" || qual.certificate == null) {
           this.snackbar.open("Qualification Name, Year and Certificate Image Required", '', {
-            duration: 2500
+            duration: 2500,
+            panelClass: ['warning']
           });
           this.loading = false;
           return;
@@ -155,7 +156,8 @@ export class AddStaffComponent implements OnInit {
         }
         if (exp.experienceName == "" || exp.startDate == null || exp.endDate == null || exp.certificate == null) {
           this.snackbar.open("Organisation Name, Start Date, End Date and Certificate Image Required", '', {
-            duration: 2500
+            duration: 2500,
+            panelClass: ['warning']
           });
           this.loading = false;
           return;
@@ -194,15 +196,14 @@ export class AddStaffComponent implements OnInit {
           lastLogin: null,
           profileImage: this.profileImage || ""
         };
-        console.log(userObject);
-        
+
         this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_STAFF).doc(documentId)
           .set(userObject, { merge: true })
           .then(() => this.toast.success("Staff Added", "Successfully"));
         this.loading = false;
         this.dialog.closeAll();
       })
-      .catch((error) => {        
+      .catch((error) => {
         this.snackbar.open(error.message, "", {
           duration: 3000,
         });
@@ -245,7 +246,7 @@ export class AddStaffComponent implements OnInit {
     if (this.experiences != undefined) {
       for (let qual of this.experiences) {
         const file = qual.certificate;
-        const path = _utils.ROUTE_STAFF + "/" + docId + "/" + _utils.ROUTE_EXPERIENCES+ "/" + qual.certificate.name;
+        const path = _utils.ROUTE_STAFF + "/" + docId + "/" + _utils.ROUTE_EXPERIENCES + "/" + qual.certificate.name;
         const storageRef = this.storageRef.ref(path);
         const upload = this.storageRef.upload(path, file);
         await upload.snapshotChanges().pipe().toPromise().then(() => {
@@ -259,9 +260,9 @@ export class AddStaffComponent implements OnInit {
   }
 
   correction() {
-    if(this.qualifications != undefined) {
+    if (this.qualifications != undefined) {
       this.finalQualification = [];
-      for(let qual of this.qualifications) {
+      for (let qual of this.qualifications) {
         this.finalQualification.push({
           qualificationName: qual.qualificationName,
           qualificationYear: qual.qualificationYear,
@@ -270,9 +271,9 @@ export class AddStaffComponent implements OnInit {
       }
     }
 
-    if(this.experiences != undefined) {
+    if (this.experiences != undefined) {
       this.finalExperiences = [];
-      for(let qual of this.experiences) {
+      for (let qual of this.experiences) {
         this.finalExperiences.push({
           experienceName: qual.experienceName,
           startDate: qual.startDate,
@@ -329,7 +330,8 @@ export class AddStaffComponent implements OnInit {
       this.profileImage = "";
       (<HTMLInputElement>document.getElementById("profileImage")).value = null;
       this.snackbar.open("Invalid image format. Only .png/.jpg/.jpeg file supported.", '', {
-        duration: 2500
+        duration: 2500,
+        panelClass: ['warning']
       });
       return;
     }
@@ -347,7 +349,8 @@ export class AddStaffComponent implements OnInit {
       tempFile = null;
       (<HTMLInputElement>document.getElementById('img' + index)).value = null;
       this.snackbar.open("Invalid image format. Only .png/.jpg/.jpeg file supported.", '', {
-        duration: 2500
+        duration: 2500,
+        panelClass: ['warning']
       });
       return;
     }
@@ -365,7 +368,8 @@ export class AddStaffComponent implements OnInit {
       tempFile = null;
       (<HTMLInputElement>document.getElementById('exp' + index)).value = null;
       this.snackbar.open("Invalid image format. Only .png/.jpg/.jpeg file supported.", '', {
-        duration: 2500
+        duration: 2500,
+        panelClass: ['warning']
       });
       return;
     }
@@ -374,14 +378,16 @@ export class AddStaffComponent implements OnInit {
   printQual() {
     if (this.qualifications == undefined) {
       this.snackbar.open("Please add one qualification", '', {
-        duration: 2500
+        duration: 2500,
+        panelClass: ['warning']
       });
       return;
     } else {
       for (let qual of this.qualifications) {
         if (qual.qualificationName == "" || qual.qualificationYear == "" || qual.certificate == undefined) {
           this.snackbar.open("Qualification Name, Year and Certificate Image Required", '', {
-            duration: 2500
+            duration: 2500,
+            panelClass: ['warning']
           });
           return;
         } else {

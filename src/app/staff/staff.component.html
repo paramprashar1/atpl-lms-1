@@ -4,77 +4,116 @@
 <div class="main-content">
     <div class="row">
         <div class="card">
-            <div class="row d-flex align-items-center justify-content-center p-2">
-                <!-- <h6 class="col-12 col-md-6 float-left">Staff</h6> -->
-                <div class="col">
-                    <button mat-button class="default m-0 float-right no-hover-effect" (click)="openModal()">Add Staff</button>
+            <div class="card-header m-0" style="padding: 10px;">
+                <h5 class="pull-left">Staffs ({{ appStore.users?.length || "0" }})</h5>
+                <div>
+                    <button mat-button class="default m-0 no-hover-effect pull-right" (click)="openModal()">Add
+                        Staff
+                    </button>
                 </div>
-
             </div>
         </div>
     </div>
     <div class="row">
         <div class="card p-2">
-            <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat mollitia deleniti ipsam labore ab aspernatur, debitis quos neque nemo vel soluta. Odit sint qui ducimus dolore, ut modi culpa deserunt?</p> -->
-            <table class="table table-hover table-responsive-lg">
-                <thead class="text-primary">
-                    <th>
-                        Sr.No <br> 
-                        <span class="table_subHeading2">.</span>
-                    </th>
-                    <th class="d-none d-sm-block">
-                        Profile <br> 
-                        <span class="table_subHeading2">.</span>
-                    </th>
-                    <th>
-                        Name <br> 
-                        <span class="table_subHeading1">Gender</span>
-                    </th>
-                    <th>
-                        Department <br> 
-                        <span class="table_subHeading1">Designation</span>
-                    </th>
-                    <th>
-                        Mobile <br> 
-                        <span class="table_subHeading1">DOB</span>
-                    </th>
-                    <th>
-                        Email <br> 
-                        <span class="table_subHeading1">Password</span>
-                    </th>
-                    <th>
-                        Active <br> 
-                        <span class="table_subHeading2">.</span>
-                    </th>
-                    <th>
-                        Actions <br> 
-                        <span class="table_subHeading2">.</span>
-                    </th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of users; index as idx">
-                        <td>{{ idx + 1 }}</td>
-                        <td class="d-none d-sm-block">
-                            <a type="button" (click)="viewImage(user.profileImage)">
-                                <img [src]="user.profileImage != '' ? user.profileImage : !user.gender ? 'https://www.w3schools.com/howto/img_avatar.png' : 'https://www.w3schools.com/howto/img_avatar2.png'" alt="" style="border-radius: 50%; height: 64px; width: 64px;">
-                            </a>
-                        </td>
-                        <td>{{ user.fname | titlecase }} {{ user.lname | titlecase }}<br> <span class="table_subHeading1" style="text-transform: uppercase;">{{ !user.gender ? "Male" : "Female" }}</span></td>
-                        <td>{{ user.department | titlecase }} <br> <span class="table_subHeading1">{{ user.designation | titlecase }}</span></td>
-                        <td>{{ user.mobile }} <br> <span class="table_subHeading1">{{ user.birthDate.toDate() | date: 'dd-MM-yyyy' }}</span></td>
-                        <td>{{ user.email }} <br> <span class="table_subHeading1">{{ user.password }}</span></td>
-                        <td>True</td>
-                        <td>
-                            <button mat-icon-button class="text-primary" title="Update Details" (click)="showUpdateUser(user.docId)">
-                                <mat-icon>edit</mat-icon>
-                            </button>
-                            <button mat-icon-button (click)="openDeleteModal(user.docId)" title="Delete User">
-                                <mat-icon style="color: red;">delete</mat-icon>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="card-body">
+                <table class="table table-hover table-responsive-lg">
+                    <thead class="text-primary">
+                        <th>
+                            Sr.No <br>
+                            <span class="table_subHeading2">.</span>
+                        </th>
+                        <th class="d-none d-sm-block">
+                            Profile <br>
+                            <span class="table_subHeading2">.</span>
+                        </th>
+                        <th>
+                            Name <br>
+                            <span class="table_subHeading1">Gender</span>
+                        </th>
+                        <th>
+                            Department <br>
+                            <span class="table_subHeading1">Designation</span>
+                        </th>
+                        <th>
+                            Mobile <br>
+                            <span class="table_subHeading1">DOB</span>
+                        </th>
+                        <th>
+                            Email <br>
+                            <span class="table_subHeading1">Password</span>
+                        </th>
+                        <th>
+                            Active <br>
+                            <span class="table_subHeading2">.</span>
+                        </th>
+                        <th>
+                            Actions <br>
+                            <span class="table_subHeading2">.</span>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of appStore.users; index as idx">
+                            <td>{{ idx + 1 }}</td>
+                            <td class="d-none d-sm-block">
+                                <a type="button" (click)="viewImage(user.profileImage)">
+                                    <img [src]="user.profileImage != '' ? user.profileImage : !user.gender ? './../../assets/img/male.png' : './../../assets/img/female.png'"
+                                        alt="" style="border-radius: 50%; height: 64px; width: 64px;">
+                                </a>
+                            </td>
+                            <td>
+                                {{ user.fname | titlecase }} {{ user.lname | titlecase }}<br>
+                                <span class="table_subHeading1">
+                                    {{ !user.gender ? "Male" : "Female" | titlecase}}
+                                </span>
+                            </td>
+                            <td>
+                                {{ user.department | titlecase }} <br>
+                                <span class="table_subHeading1">
+                                    {{ user.designation | titlecase }}
+                                </span>
+                            </td>
+                            <td>
+                                {{ user.mobile }} <br>
+                                <span class="table_subHeading1">
+                                    {{ user.birthDate.toDate() | date: 'dd-MM-yyyy' }}
+                                </span>
+                            </td>
+                            <td>
+                                {{ user.email }} <br>
+                                <span class="table_subHeading1">{{ user.password }}</span>
+                            </td>
+                            <td>
+                                <mat-slide-toggle color="primary" class="mb-2" [checked]="user.active"
+                                    (change)="changeStatus($event.checked, user.docId)">
+                                </mat-slide-toggle>
+                            </td>
+                            <td>
+                                <a type="button" class="text-primary mr-2 mb-2" title="Update Details"
+                                    (click)="showUpdateUser(user.docId)">
+                                    <mat-icon>edit</mat-icon>
+                                </a>
+                                <a type="button" class="mr-2 mb-2" (click)="openDeleteModal(user.docId)"
+                                    title="Delete User">
+                                    <mat-icon style="color: red;">delete</mat-icon>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="card-footer p-2">
+                <div class="row p-1">
+                    <div class="col">
+                        <button mat-button class="defaultBtnSpinner float-right" (click)="loadMoreData()">
+                            Load More
+                            <mat-icon *ngIf="moreDataLoader">
+                                <mat-spinner diameter="24"></mat-spinner>
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
 </div>

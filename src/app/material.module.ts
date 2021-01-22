@@ -56,7 +56,7 @@ import { MatTableModule } from '@angular/material/table';
     MatSelectModule,
     MatSlideToggleModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
   ]
 })
 export class MaterialModule { }

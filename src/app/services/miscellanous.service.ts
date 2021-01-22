@@ -18,9 +18,6 @@ export class MiscellanousService {
     private dbRef: AngularFirestore,
     private toast: ToastrService
   ) {
-    console.log(">>> Testing");
-
-
     this.getMiscellanousDataOnName(0)
       .subscribe(response => { this.departments = response.map(e => ({ ...e.payload.doc.data() as Miscellanous })) });
 

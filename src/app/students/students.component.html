@@ -4,7 +4,143 @@
 <div class="main-content">
     <div class="row">
         <div class="card">
-            <p>students works!</p>
+            <div class="card-header p-2">
+                <div class="row w-100 m-0">
+                    <div class="col p-0">
+                        <h5 class="m-0">Students ({{ appStore.students?.length || '0' }})</h5>
+                    </div>
+                    <div class="col p-0">
+                        <button mat-button class="default no-hover-effect float-right" (click)="openAddStudentModal()">
+                            Add Student
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card p-2">
+            <div class="row">
+                <div class="col box">
+                    <h5 class="heading">Lead</h5>
+                    <span class="size">{{ leadCount || '0' }}</span>
+                </div>
+                <div class="col box">
+                    <h5 class="heading">In Process</h5>
+                    <span class="size">{{ inProcessCount || '0' }}</span>
+                </div>
+                <div class="col box">
+                    <h5 class="heading">Mature</h5>
+                    <span class="size">{{ matureCount || '0' }}</span>
+                </div>
+                <div class="col box">
+                    <h5 class="heading">Not Mature</h5>
+                    <span class="size">{{ notMatureCount || '0' }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card p-2">
+            <div class="card-body">
+                <table class="table table-hover table-responsive-lg">
+                    <thead class="text-primary">
+                        <th>
+                            Sr.No <br>
+                            <span class="table_subHeading2">.</span>
+                        </th>
+                        <!-- <th class="d-none d-sm-block">
+                            Profile <br> 
+                            <span class="table_subHeading2">.</span>
+                        </th> -->
+                        <th>
+                            Name <br>
+                            <span class="table_subHeading1">Gender</span>
+                        </th>
+                        <th>
+                            Father Name <br>
+                            <span class="table_subHeading1">Father Email</span>
+                        </th>
+                        <th>
+                            Mobile <br>
+                            <span class="table_subHeading1">DOB</span>
+                        </th>
+                        <th>
+                            Email <br>
+                            <span class="table_subHeading1">Password</span>
+                        </th>
+                        <th>
+                            Status <br>
+                            <span class="table_subHeading2">.</span>
+                        </th>
+                        <th>
+                            Active <br>
+                            <span class="table_subHeading2">.</span>
+                        </th>
+                        <th>
+                            Actions <br>
+                            <span class="table_subHeading2">.</span>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of appStore.students; index as idx">
+                            <td>{{ idx + 1 }}</td>
+                            <!-- <td class="d-none d-sm-block">
+                                <a type="button" (click)="viewImage(user.profileImage)">
+                                    <img [src]="user.profileImage != '' ? user.profileImage : !user.gender ? 'https://www.w3schools.com/howto/img_avatar.png' : 'https://www.w3schools.com/howto/img_avatar2.png'" alt="" style="border-radius: 50%; height: 64px; width: 64px;">
+                                </a>
+                            </td> -->
+                            <td>{{ user.name | titlecase }}<br> <span class="table_subHeading1"
+                                    style="text-transform: uppercase;">{{ !user.gender ? "Male" : "Female" }}</span>
+                            </td>
+                            <td>
+                                {{ user.fatherName | titlecase }} <br> 
+                                <span class="table_subHeading1">{{ user.fatherEmail }}</span>
+                            </td>
+                            <td>{{ user.mobile }} <br> 
+                                <span class="table_subHeading1">
+                                    {{ user.birthDate.toDate() |date: 'dd-MM-yyyy' }}
+                                </span>
+                            </td>
+                            <td>{{ user.email }} <br> <span class="table_subHeading1">{{ user.password || "-" }}</span>
+                            </td>
+                            <td>
+                                <span class="badge badge-pill badgeFont lead " *ngIf="user.status == 0">New</span>
+                                <span class="badge badge-pill badgeFont inProcess " *ngIf="user.status == 1">In Process</span>
+                                <span class="badge badge-pill badgeFont mature " *ngIf="user.status == 2">Mature</span>
+                                <span class="badge badge-pill badgeFont notMature " *ngIf="user.status == 3">Not Mature</span>
+                            </td>
+                            <td>
+                                <mat-slide-toggle color="primary" class="mb-2" [checked]="user.active"
+                                    (change)="changeStatus($event.checked, user.docId)">
+                                </mat-slide-toggle>
+                            </td>
+                            <td>
+                                <button mat-icon-button class="text-primary" title="Update Details"
+                                    (click)="openUpdateModal(user)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button mat-icon-button (click)="openDeleteModal(user.docId)" title="Delete User">
+                                    <mat-icon style="color: red;">delete</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="card-footer p-2">
+                <div class="row p-1">
+                    <div class="col">
+                        <button mat-button class="btn btn-lg float-right"
+                            style="background: #2A9D8F; color: white; display: flex; justify-content: space-evenly; align-items: center;">
+                            Load More
+                            <mat-icon *ngIf="moreDataLoader">
+                                <mat-spinner diameter="24"></mat-spinner>
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
 </div>

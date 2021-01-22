@@ -28,6 +28,15 @@
   padding: 0px;
 }
 
+/* .mat-icon-button {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.mat-icon-button:focus {
+  outline: none;
+} */
+
 .mat-spinner circle {
   stroke: #fff;
 }
@@ -37,6 +46,85 @@
 }
 
 .default {
-  background: #2A9D8F;
+  background: #264653;
   color: #fff;
+  outline: none;
+  margin: 5px;
+}
+
+.default:focus {
+  outline: none;
+}
+
+.default-secondary {
+  background: #777;
+  color: #fff;
+}
+
+.defaultBtnSpinner {
+  background: #264653;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.defaultBtnSpinner .mat-icon {
+  margin-left: 4px;
+}
+
+.defaultBtnSpinner:focus {
+  outline: none;
+}
+
+.default .mat-button {
+  margin: 5px;
+}
+
+.studentDialog .mat-dialog-container {
+  padding: 16px 24px 0 24px !important;
+}
+
+.warning {
+  background: #ffd737;
+  color: black;
+  z-index: 999999 !important;
+}
+
+.table_subHeading1 {
+  font-size: smaller;
+  color: #888;
+}
+
+.table_subHeading2 {
+  font-size: smaller;
+  color: #fff;
+}
+
+/* Status Color Scheme */
+
+.badgeFont {
+  font-size: 12px;
+  font-weight: 600;
+  /* padding: 5px; */
+}
+
+.lead {
+  background: #ff0000;
+  color: #fff;
+}
+
+.inProcess {
+  background: #ffff00;
+  color: #000;
+}
+
+.mature {
+  background: #00ff00;
+  color: white;
+}
+
+.notMature {
+  background: orange;
+  color: #000;
 }

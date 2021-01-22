@@ -1,0 +1,138 @@
+<button class="btn btn-link pull-right m-0 p-0" mat-dialog-close>
+    <mat-icon>clear</mat-icon>
+</button>
+
+<h4 mat-dialog-title>{{ !updation ? "Add" : "Update" }} Student</h4>
+<mat-dialog-content>
+    <mat-horizontal-stepper>
+        <mat-step>
+            <ng-template matStepLabel>Student Details</ng-template>
+            <div class="row">
+                <mat-form-field class="col">
+                    <mat-label>Student Name</mat-label>
+                    <input matInput type="text" name="name" [(ngModel)]="name">
+                </mat-form-field>
+                <mat-form-field class="col">
+                    <mat-label>Student Email</mat-label>
+                    <input matInput type="text" name="email" [(ngModel)]="email">
+                </mat-form-field>
+                <mat-form-field class="col" hintLabel="Max 10 characters">
+                    <mat-label>Student mobile</mat-label>
+                    <input matInput type="text" name="mobile" [(ngModel)]="mobile" #mobilee maxlength="10">
+                    <mat-hint align="end">{{mobilee.value?.length || 0}}/10</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="col-12 col-sm-4">
+                    <mat-label>Select Gender</mat-label>
+                    <mat-select name="gender" [(ngModel)]="gender">
+                        <mat-option [value]=0>Male</mat-option>
+                        <mat-option [value]=1>Female</mat-option>
+                        <mat-option [value]=2>Others</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="col-12 col-sm-4">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" [ngModel]="birthDate?.seconds * 1000 | date: 'yyyy-MM-dd'"
+                        (ngModelChanges)="birthDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div class="col-12 col-sm-4">
+                    <input type="file" name="profileImage" id="profileImage" accept="image/*"
+                        (change)="selectProfileImage($event)">
+                </div>
+            </div>
+            <div class="row">
+                <mat-form-field class="col">
+                    <mat-label>Select Salutation</mat-label>
+                    <mat-select name="salutation" [(ngModel)]="salutation">
+                        <mat-option [value]=0>Mr</mat-option>
+                        <mat-option [value]=1>Prof</mat-option>
+                        <mat-option [value]=2>Dr</mat-option>
+                        <mat-option [value]=3>Er</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="col">
+                    <mat-label>Father Name</mat-label>
+                    <input matInput type="text" name="fatherName" [(ngModel)]="fatherName">
+                </mat-form-field>
+                <mat-form-field class="col">
+                    <mat-label>Father Email</mat-label>
+                    <input matInput type="text" name="fatherEmail" [(ngModel)]="fatherEmail">
+                </mat-form-field>
+                <mat-form-field class="col" hintLabel="Max 10 characters">
+                    <mat-label>Father mobile</mat-label>
+                    <input matInput type="text" name="fatherMobile" [(ngModel)]="fatherMobile" #mobileee maxlength="10">
+                    <mat-hint align="end">{{mobileee.value?.length || 0}}/10</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="col">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput name="address" rows="4" [(ngModel)]="address"></textarea>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button class="default pull-right" matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Appointment</ng-template>
+            <div class="row">
+                <mat-form-field class="col">
+                    <mat-label>Select Status</mat-label>
+                    <mat-select name="status" [(ngModel)]="status">
+                        <mat-option *ngFor="let status of miscs.status; index as idx" [value]="idx">
+                            {{ status.name | titlecase }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="col">
+                    <mat-label>Today Date</mat-label>
+                    <input matInput [matDatepicker]="picker1" [(ngModel)]="appointmentDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="col">
+                    <mat-label>Follow Up Date</mat-label>
+                    <input matInput [matDatepicker]="picker2" [(ngModel)]="followUpDate" [min]="appointmentDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <!-- <mat-form-field class="col">
+                    <mat-label>Inquiry</mat-label>
+                    <textarea matInput name="" row="10"></textarea>
+                </mat-form-field> -->
+                <mat-form-field class="col">
+                    <mat-label>Remarks</mat-label>
+                    <textarea matInput name="remarks" rows="10" style="resize: none;" [(ngModel)]="remarks"></textarea>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-raised-button matStepperPrevious class="default-secondary">Back</button>
+                <button mat-raised-button class="defaultBtnSpinner pull-right" (click)="addStudent()" *ngIf="!updation">
+                    Sumbit
+                    <mat-icon *ngIf="loading">
+                        <mat-spinner diameter="24"></mat-spinner>
+                    </mat-icon>
+                </button>
+                <button mat-raised-button class="defaultBtnSpinner pull-right" (click)="updateStudent()"
+                    *ngIf="updation">
+                    Update
+                    <mat-icon *ngIf="loading">
+                        <mat-spinner diameter="24"></mat-spinner>
+                    </mat-icon>
+                </button>
+            </div>
+        </mat-step>
+        <mat-step *ngIf="status == 2">
+            <ng-template matStepLabel>Batch and Fee Selection</ng-template>
+            <div>
+                <button mat-raised-button matStepperPrevious class="default-secondary">Back</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</mat-dialog-content>

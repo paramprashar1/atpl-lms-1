@@ -21,6 +21,9 @@ import { MaterialModule } from './material.module';
 import { AddStaffComponent } from './entriesComponents/add-staff/add-staff.component';
 import { DeleteModalComponent } from './entriesComponents/delete-modal/delete-modal.component';
 import { ViewImageModalComponent } from './entriesComponents/view-image-modal/view-image-modal.component';
+import { AppStoreService } from './services/app-store.service';
+import { AddStudentComponent } from './entriesComponents/add-student/add-student.component';
+import { StudentProfileComponent } from './student-profile/student-profile.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import { ViewImageModalComponent } from './entriesComponents/view-image-modal/vi
     AddStaffComponent,
     DeleteModalComponent,
     ViewImageModalComponent,
+    AddStudentComponent,
+    StudentProfileComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -56,11 +61,15 @@ import { ViewImageModalComponent } from './entriesComponents/view-image-modal/vi
   ],
   entryComponents: [
     AddStaffComponent,
+    AddStudentComponent,
     DeleteModalComponent,
-    ViewImageModalComponent
+    ViewImageModalComponent,
+  ],
+  providers: [
+    AppStoreService,
+    MiscellanousService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [MiscellanousService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
