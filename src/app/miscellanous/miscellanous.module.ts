@@ -7,6 +7,7 @@ import { StatusComponent } from './status/status.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { DesignationsComponent } from './designations/designations.component';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from '../material.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MiscellanousRoutingModule,
-    FormsModule
+    FormsModule,
+    MaterialModule
   ]
 })
 export class MiscellanousModule { }

@@ -13,11 +13,13 @@
 .heading {
     margin: 0;
     font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
     font-weight: 600;
 }
 
 .size {
     margin: 0;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
 }

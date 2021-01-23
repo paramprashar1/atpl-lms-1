@@ -51,11 +51,9 @@ import { StudentProfileComponent } from './student-profile/student-profile.compo
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
     ToastrModule.forRoot({
-      timeOut: 6000,
+      timeOut: 1500,
       toastClass: 'alert w-25',
       positionClass: "toast-top-right",
-      preventDuplicates: true,
-      maxOpened: 2,
     }),
     MaterialModule,
   ],

@@ -27,22 +27,19 @@
                     <td>{{ i + 1 }}</td>
                     <td>{{ role.name | titlecase }}</td>
                     <td>
-                        <label class="toggleSwitch nolabel" onclick="">
-                            <input type="checkbox"
-                                (change)="miscellanousService.updateActiveStatus(role.docId, $event.target.checked)"
-                                [value]="role.active" [checked]="role.active" />
-                            <span>
-                                <span>OFF</span>
-                                <span>ON</span>
-                            </span>
-                            <a></a>
-                        </label>
+                        <mat-slide-toggle color="primary" class="mb-2" [checked]="role.active"
+                            (change)="miscellanousService.updateActiveStatus(role.docId, $event.checked)">
+                        </mat-slide-toggle>
                     </td>
                     <td>
-                        <span class="material-icons text-primary mr-2" title="Edit role Name"
-                            (click)="assignValueToField(role)">edit</span>
-                        <span class="material-icons text-primary" title="Delete role"
-                            (click)="miscellanousService.deleteData(role.docId)">delete</span>
+                        <button mat-icon-button class="text-primary" title="Update Details"
+                            (click)="assignValueToField(role)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="miscellanousService.deleteData(role.docId)"
+                            title="Delete">
+                            <mat-icon style="color: red;">delete</mat-icon>
+                        </button>
                     </td>
                 </tr>
             </tbody>

@@ -4,7 +4,7 @@
 <div class="main-content">
     <div class="row">
         <div class="card">
-            <div class="card-header p-2">
+            <div class="card-header" style="padding: 10px;">
                 <div class="row w-100 m-0">
                     <div class="col p-0">
                         <h5 class="m-0">Students ({{ appStore.students?.length || '0' }})</h5>
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row d-none d-sm-block">
         <div class="card p-2">
             <div class="row">
                 <div class="col box">
@@ -45,7 +45,7 @@
             <div class="card-body">
                 <table class="table table-hover table-responsive-lg">
                     <thead class="text-primary">
-                        <th>
+                        <th class="text-center">
                             Sr.No <br>
                             <span class="table_subHeading2">.</span>
                         </th>
@@ -69,22 +69,22 @@
                             Email <br>
                             <span class="table_subHeading1">Password</span>
                         </th>
-                        <th>
+                        <th class="text-center">
                             Status <br>
                             <span class="table_subHeading2">.</span>
                         </th>
-                        <th>
+                        <th class="text-center">
                             Active <br>
                             <span class="table_subHeading2">.</span>
                         </th>
-                        <th>
+                        <th class="text-center">
                             Actions <br>
                             <span class="table_subHeading2">.</span>
                         </th>
                     </thead>
                     <tbody>
                         <tr *ngFor="let user of appStore.students; index as idx">
-                            <td>{{ idx + 1 }}</td>
+                            <td class="text-center">{{ idx + 1 }}</td>
                             <!-- <td class="d-none d-sm-block">
                                 <a type="button" (click)="viewImage(user.profileImage)">
                                     <img [src]="user.profileImage != '' ? user.profileImage : !user.gender ? 'https://www.w3schools.com/howto/img_avatar.png' : 'https://www.w3schools.com/howto/img_avatar2.png'" alt="" style="border-radius: 50%; height: 64px; width: 64px;">
@@ -104,18 +104,18 @@
                             </td>
                             <td>{{ user.email }} <br> <span class="table_subHeading1">{{ user.password || "-" }}</span>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <span class="badge badge-pill badgeFont lead " *ngIf="user.status == 0">New</span>
                                 <span class="badge badge-pill badgeFont inProcess " *ngIf="user.status == 1">In Process</span>
                                 <span class="badge badge-pill badgeFont mature " *ngIf="user.status == 2">Mature</span>
                                 <span class="badge badge-pill badgeFont notMature " *ngIf="user.status == 3">Not Mature</span>
                             </td>
-                            <td>
-                                <mat-slide-toggle color="primary" class="mb-2" [checked]="user.active"
+                            <td class="text-center">
+                                <mat-slide-toggle color="primary"  [checked]="user.active"
                                     (change)="changeStatus($event.checked, user.docId)">
                                 </mat-slide-toggle>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <button mat-icon-button class="text-primary" title="Update Details"
                                     (click)="openUpdateModal(user)">
                                     <mat-icon>edit</mat-icon>

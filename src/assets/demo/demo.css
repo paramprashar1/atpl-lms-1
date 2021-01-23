@@ -120,11 +120,11 @@
 }
 
 .mature {
-  background: #00ff00;
+  background: #3cff3c;
   color: white;
 }
 
 .notMature {
-  background: orange;
-  color: #000;
+  background: #F77F00;
+  color: #fff;
 }

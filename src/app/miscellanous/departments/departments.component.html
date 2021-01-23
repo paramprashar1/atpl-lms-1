@@ -27,22 +27,19 @@
                     <td>{{ i + 1 }}</td>
                     <td>{{ department.name | titlecase }}</td>
                     <td>
-                        <label class="toggleSwitch nolabel" onclick="">
-                            <input type="checkbox"
-                                (change)="miscellanousService.updateActiveStatus(department.docId, $event.target.checked)"
-                                [value]="department.active" [checked]="department.active" />
-                            <span>
-                                <span>OFF</span>
-                                <span>ON</span>
-                            </span>
-                            <a></a>
-                        </label>
+                        <mat-slide-toggle color="primary" class="mb-2" [checked]="department.active"
+                            (change)="miscellanousService.updateActiveStatus(department.docId, $event.checked)">
+                        </mat-slide-toggle>
                     </td>
                     <td>
-                        <span class="material-icons text-primary mr-2" title="Edit Department Name"
-                            (click)="assignValueToField(department)">edit</span>
-                        <span class="material-icons text-primary" title="Delete Department"
-                            (click)="miscellanousService.deleteData(department.docId)">delete</span>
+                        <button mat-icon-button class="text-primary" title="Update Details"
+                            (click)="assignValueToField(department)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="miscellanousService.deleteData(department.docId)"
+                            title="Delete">
+                            <mat-icon style="color: red;">delete</mat-icon>
+                        </button>
                     </td>
                 </tr>
             </tbody>

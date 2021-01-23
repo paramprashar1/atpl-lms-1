@@ -42,7 +42,7 @@ export class MiscellanousService {
     this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_MISCELLANEOUS)
       .doc(data.docId)
       .set(data, { merge: true })
-      .then(() => this.toast.success('Changes Done', 'Success'))
+      .then(() => this.toast.success('', 'Changes Done Successfully'))
       .catch(err => this.toast.warning('', 'Something Went Wrong'));
   }
 
@@ -58,7 +58,7 @@ export class MiscellanousService {
     this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_MISCELLANEOUS)
       .doc(docId)
       .update({ active: status })
-      .then(() => this.toast.success('Active Status Updated', 'Success'))
+      .then(() => this.toast.success('', 'Active Status Updated'))
       .catch(err => this.toast.warning('', 'Something Went Wrong'));
   }
 
