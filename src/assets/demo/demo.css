@@ -31,11 +31,11 @@
 /* .mat-icon-button {
   width: 30px !important;
   height: 30px !important;
-}
+}*/
 
 .mat-icon-button:focus {
   outline: none;
-} */
+}
 
 .mat-spinner circle {
   stroke: #fff;
@@ -50,6 +50,11 @@
   color: #fff;
   outline: none;
   margin: 5px;
+}
+
+.default:disabled {
+  background: #888;
+  color: white !important;
 }
 
 .default:focus {

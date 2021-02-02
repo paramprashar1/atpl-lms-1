@@ -24,16 +24,20 @@ import { ViewImageModalComponent } from './entriesComponents/view-image-modal/vi
 import { AppStoreService } from './services/app-store.service';
 import { AddStudentComponent } from './entriesComponents/add-student/add-student.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { AddFeeComponent } from './entriesComponents/add-fee/add-fee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    StudentProfileComponent,
+
+    // Dialogs Component
     AddStaffComponent,
+    AddStudentComponent,
+    AddFeeComponent,
     DeleteModalComponent,
     ViewImageModalComponent,
-    AddStudentComponent,
-    StudentProfileComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -58,6 +62,7 @@ import { StudentProfileComponent } from './student-profile/student-profile.compo
     MaterialModule,
   ],
   entryComponents: [
+    AddFeeComponent,
     AddStaffComponent,
     AddStudentComponent,
     DeleteModalComponent,

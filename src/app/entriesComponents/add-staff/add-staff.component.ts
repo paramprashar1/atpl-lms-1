@@ -71,7 +71,8 @@ export class AddStaffComponent implements OnInit {
     this.loading = true;
     if (this.firstName == undefined || this.firstName == "") {
       this.snackbar.open("First Name  Required", "", {
-        duration: 2000
+        duration: 2000,
+        panelClass: ['warning']
       });
       this.loading = false;
       return;
@@ -79,7 +80,8 @@ export class AddStaffComponent implements OnInit {
 
     if (this.address == undefined && this.address?.length <= 1) {
       this.snackbar.open("Address required", "", {
-        duration: 2000
+        duration: 2000,
+        panelClass: ['warning']
       });
       this.loading = false;
       return;
@@ -87,7 +89,8 @@ export class AddStaffComponent implements OnInit {
 
     if (!this.email.includes("@") || !this.email.includes(".")) {
       this.snackbar.open("Invalid Email ", "", {
-        duration: 2000
+        duration: 2000,
+        panelClass: ['warning']
       });
       this.loading = false;
       return;
@@ -95,7 +98,8 @@ export class AddStaffComponent implements OnInit {
 
     if (this.email.substr(0, this.email.indexOf('@gmail.com')) == "") {
       this.snackbar.open("Invalid Username in Email ", "", {
-        duration: 2000
+        duration: 2000,
+        panelClass: ['warning']
       });
       this.loading = false;
       return;
@@ -103,7 +107,8 @@ export class AddStaffComponent implements OnInit {
 
     if (this.role == undefined && this.role == null) {
       this.snackbar.open("Please Select Role", "", {
-        duration: 2000
+        duration: 2000,
+        panelClass: ['warning']
       });
       this.loading = false;
       return;
@@ -111,7 +116,8 @@ export class AddStaffComponent implements OnInit {
 
     if (this.gender == undefined) {
       this.snackbar.open("Gender is required ", "", {
-        duration: 2000
+        duration: 2000,
+        panelClass: ['warning']
       });
       this.loading = false;
       return;
@@ -120,14 +126,16 @@ export class AddStaffComponent implements OnInit {
     if (this.role == 1) {
       if (this.department == undefined && this.department == null) {
         this.snackbar.open("Please Select Department", "", {
-          duration: 2000
+          duration: 2000,
+          panelClass: ['warning']
         });
         this.loading = false;
         return;
       }
       if (this.designation == undefined && this.designation == null) {
         this.snackbar.open("Please Select Designation", "", {
-          duration: 2000
+          duration: 2000,
+          panelClass: ['warning']
         });
         this.loading = false;
         return;

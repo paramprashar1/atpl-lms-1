@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from '../../material.module';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
+import { FeeModuleComponent } from '../../fee-module/fee-module.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UserProfileComponent } from '../../user-profile/user-profile.component'
     MediaComponent,
     MiscellanousComponent,
     StaffComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FeeModuleComponent
   ],
   imports: [
     CommonModule,

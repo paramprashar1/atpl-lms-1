@@ -1,0 +1,8 @@
+td, th {
+    /* border: none; */
+    padding: 10px !important;
+}
+
+td>mat-form-field {
+    width: 100% !important;
+}

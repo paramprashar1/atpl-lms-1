@@ -1,0 +1,53 @@
+<button class="btn btn-link pull-right m-0 p-0" mat-dialog-close>
+    <mat-icon>clear</mat-icon>
+</button>
+
+<h4 mat-dialog-title>Add Fee Structure</h4>
+<mat-dialog-content class="mat-typography">
+    <div class="row">
+        <mat-form-field class="col">
+            <mat-label>Fee Structure Name</mat-label>
+            <input type="text" matInput name="name" [(ngModel)]="name">
+        </mat-form-field>
+    </div>
+    <table class="table table-responsive-lg table-hover table-bordered">
+        <tr>
+            <td class="customTableData">Fee Components</td>
+            <td colspan="2">
+                <button mat-icon-button (click)="addNewitem()" class="pull-right">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </td>
+        </tr>
+        <tr *ngFor="let fee of detailsArray; index as idx">
+            <td>
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" [id]="'name' + idx" name="name" [(ngModel)]="fee['name']">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <mat-label>Amount</mat-label>
+                    <input matInput type="number" name="name" [(ngModel)]="fee['amount']"
+                        (input)="calculateTotalFee()">
+                </mat-form-field>
+            </td>
+            <td>
+                <button mat-icon-button (click)="removeItem(idx)">
+                    <mat-icon style="color: red;">delete</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </table>
+</mat-dialog-content>
+<div mat-dialog-actions>
+    <div class="row w-100">
+        <div class="col" *ngIf="total > 0">
+            <h6 class="m-0">Total (<span style="font-weight: 600;">&#8377;</span>): {{ total }}</h6>
+        </div>
+        <div class="col p-0">
+            <button mat-button class="default float-right" (click)="addFeeStructure()">Submit</button>
+        </div>
+    </div>
+</div>
