@@ -23,12 +23,12 @@
                 <th>Actions</th>
             </thead>
             <tbody class="text-center">
-                <tr *ngFor="let designation of miscellanousService.designations; index as i">
+                <tr *ngFor="let designation of miscs.designations; index as i">
                     <td>{{ i + 1 }}</td>
                     <td>{{ designation.name | titlecase }}</td>
                     <td>
                         <mat-slide-toggle color="primary" class="mb-2" [checked]="designation.active"
-                            (change)="miscellanousService.updateActiveStatus(designation.docId, $event.checked)">
+                            (change)="updateActiveStatus(designation.docId, $event.checked)">
                         </mat-slide-toggle>
                     </td>
                     <td>
@@ -36,7 +36,7 @@
                             (click)="assignValueToField(designation)">
                             <mat-icon>edit</mat-icon>
                         </button>
-                        <button mat-icon-button (click)="miscellanousService.deleteData(designation.docId)"
+                        <button mat-icon-button (click)="miscs.deleteData(designation.docId)"
                             title="Delete">
                             <mat-icon style="color: red;">delete</mat-icon>
                         </button>

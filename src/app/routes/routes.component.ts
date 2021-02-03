@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddRoutesComponent } from '../entriesComponents/add-routes/add-routes.component';
 import { DeleteModalComponent } from '../entriesComponents/delete-modal/delete-modal.component';
 import { AppStoreService } from '../services/app-store.service';
+import { MiscellanousService } from '../services/miscellanous.service';
 import { Routes } from '../Utils/routes.modal';
 import * as _utils from './../Utils/utils';
 
@@ -17,7 +18,8 @@ export class RoutesComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private dbRef: AngularFirestore,
-    private appStore: AppStoreService
+    private appStore: AppStoreService,
+    private miscs: MiscellanousService
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +57,10 @@ export class RoutesComponent implements OnInit {
         'collection': _utils.COLLECTION_ROUTES
       }
     });
+  }
+
+  updateActiveStatus(docId, status) {
+    this.miscs.updateActiveStatus(docId, _utils.COLLECTION_ROUTES, status);
   }
 
 }

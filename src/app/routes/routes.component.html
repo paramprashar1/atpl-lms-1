@@ -23,6 +23,7 @@
                         <th>Starting Point</th>
                         <th>Ending Point</th>
                         <th>Fee</th>
+                        <th>Active</th>
                         <th>Actions</th>
                     </thead>
                     <tbody>
@@ -32,6 +33,11 @@
                             <td>{{ route.from | titlecase }}</td>
                             <td>{{ route.to | titlecase }}</td>
                             <td>{{ route.fee }}</td>
+                            <td>
+                                <mat-slide-toggle color="primary" class="mb-2" [checked]="route.active"
+                                    (change)="updateActiveStatus(route.docId, $event.checked)">
+                                </mat-slide-toggle>
+                            </td>
                             <td>
                                 <button mat-icon-button class="text-primary" title="Update Details"
                                     (click)="openDialog('UPDATE', route)">

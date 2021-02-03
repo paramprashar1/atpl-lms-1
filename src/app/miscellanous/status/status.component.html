@@ -23,12 +23,12 @@
                 <th>Actions</th>
             </thead>
             <tbody class="text-center">
-                <tr *ngFor="let status of miscellanousService.status; index as i">
+                <tr *ngFor="let status of miscs.status; index as i">
                     <td>{{ i + 1 }}</td>
                     <td>{{ status.name | titlecase }}</td>
                     <td>
                         <mat-slide-toggle color="primary" class="mb-2" [checked]="status.active"
-                            (change)="miscellanousService.updateActiveStatus(status.docId, $event.checked)">
+                            (change)="updateActiveStatus(status.docId, $event.checked)">
                         </mat-slide-toggle>
                     </td>
                     <td>
@@ -36,7 +36,7 @@
                             (click)="assignValueToField(status)">
                             <mat-icon>edit</mat-icon>
                         </button>
-                        <button mat-icon-button (click)="miscellanousService.deleteData(status.docId)"
+                        <button mat-icon-button (click)="miscs.deleteData(status.docId)"
                             title="Delete">
                             <mat-icon style="color: red;">delete</mat-icon>
                         </button>

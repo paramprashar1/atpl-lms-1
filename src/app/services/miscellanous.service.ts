@@ -33,6 +33,15 @@ export class MiscellanousService {
 
   getDocId = () => (this.dbRef.createId());
 
+  updateActiveStatus(docId, collection, status) {
+    this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(collection)
+      .doc(docId)
+      .set({ active: status }, { merge: true })
+      .then(() => this.toast.success('', 'Active Status Updated'))
+      .catch(err => this.toast.warning('', 'Something Went Wrong'));
+  }
+
+
   checkDuplicateRecord(collectionName: string, key: any, value: any) {
     return this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(collectionName, ref => ref.where(key, '==', value))
       .get().toPromise();
@@ -51,14 +60,6 @@ export class MiscellanousService {
       .doc(docId)
       .delete()
       .then(() => this.toast.success('', 'Deleted Successfully'))
-      .catch(err => this.toast.warning('', 'Something Went Wrong'));
-  }
-
-  updateActiveStatus(docId, status) {
-    this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_MISCELLANEOUS)
-      .doc(docId)
-      .update({ active: status })
-      .then(() => this.toast.success('', 'Active Status Updated'))
       .catch(err => this.toast.warning('', 'Something Went Wrong'));
   }
 

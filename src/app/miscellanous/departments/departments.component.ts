@@ -16,15 +16,19 @@ export class DepartmentsComponent implements OnInit {
   updating: boolean = false;
 
   constructor(
-    private miscellanousService: MiscellanousService,
+    private miscs: MiscellanousService,
     private toast: ToastrService
   ) { } 
 
   ngOnInit(): void {
-    if ( this.miscellanousService.departments.length == 0) {
-      this.miscellanousService.getMiscellanousDataOnName(0)
-        .subscribe(response => { this.miscellanousService.departments = response.map(e => ({ ...e.payload.doc.data() as Miscellanous })) })
+    if ( this.miscs.departments.length == 0) {
+      this.miscs.getMiscellanousDataOnName(0)
+        .subscribe(response => { this.miscs.departments = response.map(e => ({ ...e.payload.doc.data() as Miscellanous })) })
     }
+  }
+
+  updateActiveStatus(docId, status) {
+    this.miscs.updateActiveStatus(docId, _utils.COLLECTION_MISCELLANEOUS, status);
   }
 
   pushDataToFirestore() {
@@ -33,16 +37,16 @@ export class DepartmentsComponent implements OnInit {
     } else {
       let data = {};
       data['name'] = this.departmentName.toLowerCase();
-      data['docId'] = this.departmentId == null ? this.miscellanousService.getDocId() : this.departmentId;
+      data['docId'] = this.departmentId == null ? this.miscs.getDocId() : this.departmentId;
       data['type'] = 0;
       if (this.departmentId == null) {
         data['createdOn'] = new Date();
         data['updatedOn'] = new Date();
         data['active'] = true;
-        this.miscellanousService.checkDuplicateRecord(_utils.COLLECTION_MISCELLANEOUS, 'name', data['name'])
+        this.miscs.checkDuplicateRecord(_utils.COLLECTION_MISCELLANEOUS, 'name', data['name'])
         .then(response => {
           if (response.size == 0) {
-            this.miscellanousService.addMiscellanousDataToFirestore(data);
+            this.miscs.addMiscellanousDataToFirestore(data);
             this.departmentName = null;
           } else {
             this.toast.warning('Same Entry Already Exist', 'Warning', {
@@ -55,7 +59,7 @@ export class DepartmentsComponent implements OnInit {
         });
       } else {
         data['updatedOn'] = new Date();
-        this.miscellanousService.addMiscellanousDataToFirestore(data);
+        this.miscs.addMiscellanousDataToFirestore(data);
         this.departmentName = null;
         this.departmentId = null;
         this.updating = false;

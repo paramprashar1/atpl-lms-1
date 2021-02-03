@@ -81,6 +81,7 @@ export class AddRoutesComponent implements OnInit {
       'from': this.from.toLowerCase(),
       'to': this.to.toLowerCase(),
       'fee': this.fee,
+      'active': true,
       'createdOn': this.updating ? this.createdOn : new Date() ,
       'updateOn': new Date()
     };

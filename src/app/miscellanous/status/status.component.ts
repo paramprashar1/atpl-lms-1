@@ -16,15 +16,19 @@ export class StatusComponent implements OnInit {
   updating: boolean = false;
 
   constructor(
-    private miscellanousService: MiscellanousService,
+    private miscs: MiscellanousService,
     private toast: ToastrService
   ) { } 
 
   ngOnInit(): void {
-    if ( this.miscellanousService.status.length == 0) {
-      this.miscellanousService.getMiscellanousDataOnName(3)
-        .subscribe(response => { this.miscellanousService.status = response.map(e => ({ ...e.payload.doc.data() as Miscellanous })) })
+    if ( this.miscs.status.length == 0) {
+      this.miscs.getMiscellanousDataOnName(3)
+        .subscribe(response => { this.miscs.status = response.map(e => ({ ...e.payload.doc.data() as Miscellanous })) })
     }
+  }
+
+  updateActiveStatus(docId, status) {
+    this.miscs.updateActiveStatus(docId, _utils.COLLECTION_MISCELLANEOUS, status);
   }
 
   pushDataToFirestore() {
@@ -33,16 +37,16 @@ export class StatusComponent implements OnInit {
     } else {
       let data = {};
       data['name'] = this.statusName.toLowerCase();
-      data['docId'] = this.statusId == null ? this.miscellanousService.getDocId() : this.statusId;
+      data['docId'] = this.statusId == null ? this.miscs.getDocId() : this.statusId;
       data['type'] = 3;
       if (this.statusId == null) {
         data['createdOn'] = new Date();
         data['updatedOn'] = new Date();
         data['active'] = true;
-        this.miscellanousService.checkDuplicateRecord(_utils.COLLECTION_MISCELLANEOUS, 'name', data['name'])
+        this.miscs.checkDuplicateRecord(_utils.COLLECTION_MISCELLANEOUS, 'name', data['name'])
         .then(response => {
           if (response.size == 0) {
-            this.miscellanousService.addMiscellanousDataToFirestore(data);
+            this.miscs.addMiscellanousDataToFirestore(data);
             this.statusName = null;
           } else {
             this.toast.warning('Same Entry Already Exist', 'Warning', {
@@ -55,7 +59,7 @@ export class StatusComponent implements OnInit {
         });
       } else {
         data['updatedOn'] = new Date();
-        this.miscellanousService.addMiscellanousDataToFirestore(data);
+        this.miscs.addMiscellanousDataToFirestore(data);
         this.statusName = null;
         this.statusId = null;
         this.updating = false;

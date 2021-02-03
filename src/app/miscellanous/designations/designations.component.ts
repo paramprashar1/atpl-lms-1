@@ -16,15 +16,19 @@ export class DesignationsComponent implements OnInit {
   updating: boolean = false;
 
   constructor(
-    private miscellanousService: MiscellanousService,
+    private miscs: MiscellanousService,
     private toast: ToastrService
   ) { } 
 
   ngOnInit(): void {
-    if ( this.miscellanousService.designations.length == 0) {
-      this.miscellanousService.getMiscellanousDataOnName(1)
-        .subscribe(response => { this.miscellanousService.designations = response.map(e => ({ ...e.payload.doc.data() as Miscellanous })) })
+    if ( this.miscs.designations.length == 0) {
+      this.miscs.getMiscellanousDataOnName(1)
+        .subscribe(response => { this.miscs.designations = response.map(e => ({ ...e.payload.doc.data() as Miscellanous })) })
     }
+  }
+
+  updateActiveStatus(docId, status) {
+    this.miscs.updateActiveStatus(docId, _utils.COLLECTION_MISCELLANEOUS, status);
   }
 
   pushDataToFirestore() {
@@ -33,16 +37,16 @@ export class DesignationsComponent implements OnInit {
     } else {
       let data = {};
       data['name'] = this.designationName.toLowerCase();
-      data['docId'] = this.designationId == null ? this.miscellanousService.getDocId() : this.designationId;
+      data['docId'] = this.designationId == null ? this.miscs.getDocId() : this.designationId;
       data['type'] = 1;
       if (this.designationId == null) {
         data['createdOn'] = new Date();
         data['updatedOn'] = new Date();
         data['active'] = true;
-        this.miscellanousService.checkDuplicateRecord(_utils.COLLECTION_MISCELLANEOUS, 'name', data['name'])
+        this.miscs.checkDuplicateRecord(_utils.COLLECTION_MISCELLANEOUS, 'name', data['name'])
         .then(response => {
           if (response.size == 0) {
-            this.miscellanousService.addMiscellanousDataToFirestore(data);
+            this.miscs.addMiscellanousDataToFirestore(data);
             this.designationName = null;
           } else {
             this.toast.warning('Same Entry Already Exist', 'Warning', {
@@ -55,7 +59,7 @@ export class DesignationsComponent implements OnInit {
         });
       } else {
         data['updatedOn'] = new Date();
-        this.miscellanousService.addMiscellanousDataToFirestore(data);
+        this.miscs.addMiscellanousDataToFirestore(data);
         this.designationName = null;
         this.designationId = null;
         this.updating = false;

@@ -75,6 +75,7 @@ export class AddFeeComponent implements OnInit {
       'name': this.name.toLowerCase(),
       'total': this.total,
       'feeComponents': this.detailsArray.map(e => ({ name: e.name.toLowerCase(), amount: e.amount })),
+      'active': true,
       'createdOn': new Date(),
       'updatedOn': new Date()
     };
