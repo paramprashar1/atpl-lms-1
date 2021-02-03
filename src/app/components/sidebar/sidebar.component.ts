@@ -15,6 +15,7 @@ export const ROUTES: RouteInfo[] = [
   { path: `/${_utils.ROUTE_SUBJECTS}`, title: _utils.LABEL_SUBJECTS, icons: 'subject', class: '' },
   { path: `/${_utils.ROUTE_MEDIA}`, title: _utils.LABEL_MEDIA, icons: 'perm_media', class: '' },
   { path: `/${_utils.ROUTE_FEEMODULE}`, title: _utils.LABEL_FEEMODULE, icons: 'request_quote', class: '' },
+  { path: `/${_utils.ROUTE_ROUTES}`, title: _utils.LABEL_ROUTES, icons: 'alt_route', class: '' },
   { path: `/${_utils.ROUTE_MISCELLANOUS}`, title: _utils.LABEL_MISCELLANOUS, icons: 'miscellaneous_services', class: '' },
 ];
 

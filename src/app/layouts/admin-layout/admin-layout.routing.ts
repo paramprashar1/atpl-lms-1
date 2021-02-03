@@ -9,6 +9,7 @@ import { StudentsComponent } from '../../students/students.component';
 import { SubjectsComponent } from '../../subjects/subjects.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { FeeModuleComponent } from '../../fee-module/fee-module.component';
+import { RoutesComponent } from '../../routes/routes.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: '', redirectTo: _utils.ROUTE_DASHBOARD, pathMatch: 'full' },
@@ -23,5 +24,6 @@ export const AdminLayoutRoutes: Routes = [
     children: [{ path: '', loadChildren: './../../miscellanous/miscellanous.module#MiscellanousModule' }]
   },
   { path: _utils.ROUTE_USERPROFILE + "/:docId", component: UserProfileComponent },
-  { path: _utils.ROUTE_FEEMODULE, component: FeeModuleComponent }
+  { path: _utils.ROUTE_FEEMODULE, component: FeeModuleComponent },
+  { path: _utils.ROUTE_ROUTES, component: RoutesComponent }
 ];

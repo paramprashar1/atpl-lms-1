@@ -1,0 +1,51 @@
+<div class="panel-header panel-header-sm"></div>
+
+<div class="main-content">
+    <div class="row">
+        <div class="card">
+            <div class="card-header" style="padding: 10px;">
+                <div class="row w-100 m-0">
+                    <h4 class="col float-left m-0">Bus Routes</h4>
+                    <button mat-button class="default no-hover-effect float-right" (click)="openDialog('ADD')">
+                        Add New Route
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="card-body p-3">
+                <table class="table table-responsive-lg table-hover text-center">
+                    <thead class="text-primary">
+                        <th>Sr. No</th>
+                        <th>Route Name</th>
+                        <th>Starting Point</th>
+                        <th>Ending Point</th>
+                        <th>Fee</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let route of appStore.busRoutes; index as i">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ route.name | uppercase }}</td>
+                            <td>{{ route.from | titlecase }}</td>
+                            <td>{{ route.to | titlecase }}</td>
+                            <td>{{ route.fee }}</td>
+                            <td>
+                                <button mat-icon-button class="text-primary" title="Update Details"
+                                    (click)="openDialog('UPDATE', route)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button mat-icon-button class="text-danger" title="Delete User"
+                                    (click)="deleteRoute(route.docId)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

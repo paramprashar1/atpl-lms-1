@@ -4,11 +4,11 @@
 <div class="main-content">
     <div class="row">
         <div class="card">
-            <div class="card-header m-0" style="padding: 10px;">
-                <h5 class="pull-left">Staffs ({{ appStore.users?.length || "0" }})</h5>
-                <div>
-                    <button mat-button class="default m-0 no-hover-effect pull-right" (click)="openModal()">Add
-                        Staff
+            <div class="card-header" style="padding: 10px;">
+                <div class="row w-100 m-0">
+                    <h4 class="col float-left m-0">Staffs ({{ appStore.users?.length || "0" }})</h4>
+                    <button mat-button class="default no-hover-effect float-right" (click)="openModal()">
+                        Add Staff
                     </button>
                 </div>
             </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { AddFeeComponent } from '../entriesComponents/add-fee/add-fee.component';
+import { DeleteModalComponent } from '../entriesComponents/delete-modal/delete-modal.component';
 import { AppStoreService } from '../services/app-store.service';
 import { FeeStructure } from '../Utils/fee-structure';
 import * as _utils from './../Utils/utils';
@@ -24,21 +25,45 @@ export class FeeModuleComponent implements OnInit {
       .snapshotChanges()
       .subscribe((response) => {
         this.appStore.feeStructures = response.map(e => ({ ...e.payload.doc.data() as FeeStructure }));
-        console.log(">>> fee structures: ", this.appStore.feeStructures);
-
       })
+  }
+
+  deleteFeeStructure(docId) {
+    this.dialog.open(DeleteModalComponent, {
+      data: {
+        'docId': docId,
+        'collection': _utils.COLLECTION_FEESTRUCTURES
+      }
+    });
   }
 
   openFeeDialog(type: string, feeObj?) {
     switch(type) {
       case "ADD": {
-        this.dialog.open(AddFeeComponent);
+        this.dialog.open(AddFeeComponent, {
+          data: {
+            'feeObj': null,
+            'viewing': false
+          }
+        });
         break;
       }
       case "UPDATE": {
+        this.dialog.open(AddFeeComponent, {
+          data: {
+            'feeObj': feeObj,
+            'viewing': false
+          }
+        });
         break;
       }
       case "VIEW": {
+        this.dialog.open(AddFeeComponent, {
+          data: {
+            'feeObj': feeObj,
+            'viewing': true
+          }
+        });
         break;
       }
     }

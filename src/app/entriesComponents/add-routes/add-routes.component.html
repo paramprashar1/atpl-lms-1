@@ -1,0 +1,30 @@
+<button class="btn btn-link pull-right m-0 p-0" mat-dialog-close>
+    <mat-icon>clear</mat-icon>
+</button>
+
+<h4 mat-dialog-title>{{ updating ? 'Update' : 'Add' }} Routes</h4>
+
+<mat-dialog-content class="mat-typography">
+    <!-- <mat-form-field class="col">
+        <mat-label>Route Name</mat-label>
+        <input type="text" matInput name="name" [(ngModel)]="name">
+    </mat-form-field> -->
+    <mat-form-field class="col">
+        <mat-label>Starting Point</mat-label>
+        <input type="text" matInput name="from" [(ngModel)]="from">
+    </mat-form-field>
+    <mat-form-field class="col">
+        <mat-label>Ending Point</mat-label>
+        <input type="text" matInput name="to" [(ngModel)]="to">
+    </mat-form-field>
+    <mat-form-field class="col">
+        <mat-label>Route Fee (&#8377;)</mat-label>
+        <input type="number" matInput name="fee" [(ngModel)]="fee">
+    </mat-form-field>
+
+    <div class="col">
+        <button type="button" mat-button class="default no-hover-effect float-right" (click)="submitRoute()">
+            Submit
+        </button>
+    </div>
+</mat-dialog-content>

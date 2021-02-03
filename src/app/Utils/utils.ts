@@ -15,6 +15,7 @@ export const COLLECTION_MISCELLANEOUS = 'miscellanous' + HYPHEN + MAIN;
 export const COLLECTION_APPOINTMENTS = 'appointments' + HYPHEN + MAIN;
 export const COLLECTION_TRANSACTIONS = 'transactions' + HYPHEN + MAIN;
 export const COLLECTION_FEESTRUCTURES = 'feestructures' + HYPHEN + MAIN;
+export const COLLECTION_ROUTES = 'routes' + HYPHEN + MAIN;
 // export const COLLECTION_DESIGNATION = 'Designations';
 // export const COLLECTION_DEPARTMENT = 'Departments';
 // export const COLLECTION_Roles = 'Roles';
@@ -38,6 +39,7 @@ export const ROUTE_EXPERIENCES = 'experiences';
 export const ROUTE_APPOINTMENTS = 'appointments';
 export const ROUTE_TRANSACTIONS = 'transactions';
 export const ROUTE_FEEMODULE = 'fee-module';
+export const ROUTE_ROUTES = 'bus-routes';
 
 // Labels
 export const LABEL_DASHBOARD = 'DASHBOARD';
@@ -52,6 +54,7 @@ export const LABEL_DEPARTMENTS = 'DEPARTMENTS';
 export const LABEL_DESIGNATIONS = 'DESIGNATIONS';
 export const LABEL_STATUS = 'STATUS';
 export const LABEL_FEEMODULE = 'FEE MODULE';
+export const LABEL_ROUTES = 'BUS ROUTES';
 
 // color hashcodes
 export const COLOR_PRIMARY = '#2A9D8F';

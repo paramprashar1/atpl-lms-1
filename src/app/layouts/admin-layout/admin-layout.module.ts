@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from '../../material.module';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { FeeModuleComponent } from '../../fee-module/fee-module.component';
+import { RoutesComponent } from '../../routes/routes.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FeeModuleComponent } from '../../fee-module/fee-module.component';
     MiscellanousComponent,
     StaffComponent,
     UserProfileComponent,
-    FeeModuleComponent
+    FeeModuleComponent,
+    RoutesComponent
   ],
   imports: [
     CommonModule,

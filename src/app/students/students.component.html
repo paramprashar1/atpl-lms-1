@@ -6,14 +6,10 @@
         <div class="card">
             <div class="card-header" style="padding: 10px;">
                 <div class="row w-100 m-0">
-                    <div class="col p-0">
-                        <h5 class="m-0">Students ({{ appStore.students?.length || '0' }})</h5>
-                    </div>
-                    <div class="col p-0">
-                        <button mat-button class="default no-hover-effect float-right" (click)="openAddStudentModal()">
-                            Add Student
-                        </button>
-                    </div>
+                    <h4 class="col float-left m-0">Students ({{ appStore.students?.length || '0' }})</h4>
+                    <button mat-button class="default no-hover-effect float-right" (click)="openAddStudentModal()">
+                        Add Student
+                    </button>
                 </div>
             </div>
         </div>

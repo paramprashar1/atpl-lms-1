@@ -18,13 +18,14 @@ import { environment as dev } from './../environments/environment';
 import { environment as prod } from './../environments/environment.prod';
 import { MiscellanousService } from './services/miscellanous.service';
 import { MaterialModule } from './material.module';
-import { AddStaffComponent } from './entriesComponents/add-staff/add-staff.component';
 import { DeleteModalComponent } from './entriesComponents/delete-modal/delete-modal.component';
 import { ViewImageModalComponent } from './entriesComponents/view-image-modal/view-image-modal.component';
 import { AppStoreService } from './services/app-store.service';
-import { AddStudentComponent } from './entriesComponents/add-student/add-student.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { AddStaffComponent } from './entriesComponents/add-staff/add-staff.component';
+import { AddStudentComponent } from './entriesComponents/add-student/add-student.component';
 import { AddFeeComponent } from './entriesComponents/add-fee/add-fee.component';
+import { AddRoutesComponent } from './entriesComponents/add-routes/add-routes.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AddFeeComponent } from './entriesComponents/add-fee/add-fee.component';
     AddStaffComponent,
     AddStudentComponent,
     AddFeeComponent,
+    AddRoutesComponent,
     DeleteModalComponent,
     ViewImageModalComponent,
   ],
@@ -65,6 +67,7 @@ import { AddFeeComponent } from './entriesComponents/add-fee/add-fee.component';
     AddFeeComponent,
     AddStaffComponent,
     AddStudentComponent,
+    AddRoutesComponent,
     DeleteModalComponent,
     ViewImageModalComponent,
   ],
