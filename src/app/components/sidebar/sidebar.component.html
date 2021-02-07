@@ -10,7 +10,7 @@
 <div class="sidebar-wrapper">
     <ul class="nav">
         <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
-            <a [routerLink]="[menuItem.path]" class="d-flex text-center align-items-center">
+            <a replaceUrl [routerLink]="[menuItem.path]" class="d-flex text-center align-items-center">
                 <span class="material-icons mr-3">{{menuItem.icons}}</span>
                 <p class="font-weight-bold">{{menuItem.title}}</p>
             </a>

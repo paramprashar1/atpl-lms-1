@@ -4,7 +4,7 @@ export class Routes {
     from: string;
     to: string;
     fee: number;
-    active: boolean;
+    active?: boolean;
     createdOn: Date;
     updateOn: Date;
 }

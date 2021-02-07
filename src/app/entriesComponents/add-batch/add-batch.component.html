@@ -1,0 +1,43 @@
+<button class="btn btn-link pull-right m-0 p-0" mat-dialog-close>
+  <mat-icon>clear</mat-icon>
+</button>
+
+<h4 mat-dialog-title>Add Batch</h4>
+
+<mat-dialog-content class="mat-typography">
+  <div class="row">
+    <div class="col p-0">
+      <mat-form-field class="col">
+        <mat-label>Batch Name</mat-label>
+        <input type="text" matInput name="name" [(ngModel)]="name">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Batch Year</mat-label>
+        <input type="number" matInput name="year" [(ngModel)]="year" maxlength="4">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Starting Date</mat-label>
+        <input matInput [matDatepicker]="picker" name="startingDate" [(ngModel)]="startingDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Ending Date</mat-label>
+        <input matInput [matDatepicker]="picker1" name="endingDate" [(ngModel)]="endingDate">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col p-0">
+      <mat-form-field class="col">
+        <mat-label>Description</mat-label>
+        <textarea matInput rows="12" name="description" [(ngModel)]="description"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="col p-0">
+    <button type="button" mat-button class="default no-hover-effect float-right" (click)="addBatch()">
+      Submit
+    </button>
+  </div>
+</mat-dialog-content>

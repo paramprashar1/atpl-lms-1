@@ -22,7 +22,7 @@ export class Student {
     
     createdOn: Date;
     updatedOn: Date;
-    active: boolean;
+    active?: boolean;
 
     // optional attributes
     authId?: string;

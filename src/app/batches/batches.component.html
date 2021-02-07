@@ -1,10 +1,56 @@
-<div class="panel-header panel-header-sm">
-</div>
+<router-outlet>
+  <div class="panel-header panel-header-sm"></div>
 
-<div class="main-content">
+  <div class="main-content">
     <div class="row">
-        <div class="card">
-            <p>Batches Work</p>
+      <div class="card">
+        <div class="card-header" style="padding: 10px;">
+          <div class="row w-100 m-0">
+            <h4 class="col float-left m-0">Batches (0)</h4>
+            <button mat-button class="default no-hover-effect float-right" (click)="openDialog()">
+              Add Batch
+            </button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+    <div class="row">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-responsive-lg table-hover">
+            <tr class="text-primary">
+              <th>Sr.No</th>
+              <th>Batch Name</th>
+              <th>Batch Year</th>
+              <th>Staring Date</th>
+              <th>Ending Date</th>
+              <th>Active</th>
+              <th>Actions</th>
+            </tr>
+            <tr *ngFor="let batch of appStore.batches; index as idx" class="trHover">
+              <td>{{ idx + 1 }}</td>
+              <td>{{ batch.batchName | titlecase }}</td>
+              <td>{{ batch.batchYear }}</td>
+              <td>{{ batch.startingDate['seconds'] * 1000 | date: 'yyyy-MM-dd' }}</td>
+              <td>{{ batch.endingDate['seconds'] * 1000 | date: 'yyyy-MM-dd' }}</td>
+              <td>
+                <mat-slide-toggle color="primary" class="mb-2"
+                  [checked]="batch.active == undefined ? false : batch.active"
+                  (change)="changeStatus($event.checked, batch.docId)">
+                </mat-slide-toggle>
+              </td>
+              <td>
+                <a type="button" class="mr-2 mb-2" title="Update User" (click)="readMore(batch.docId)">
+                  <mat-icon>edit</mat-icon>
+                </a>
+                <a type="button" class="mr-2 mb-2" title="Delete User">
+                  <mat-icon style="color: red;">delete</mat-icon>
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</router-outlet>

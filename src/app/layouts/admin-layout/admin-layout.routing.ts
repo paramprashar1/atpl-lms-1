@@ -10,20 +10,35 @@ import { SubjectsComponent } from '../../subjects/subjects.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { FeeModuleComponent } from '../../fee-module/fee-module.component';
 import { RoutesComponent } from '../../routes/routes.component';
+import { BatchDetailComponent } from '../../batch-detail/batch-detail.component';
+import { SemesterDetailComponent } from '../../semester-detail/semester-detail.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: '', redirectTo: _utils.ROUTE_DASHBOARD, pathMatch: 'full' },
   { path: _utils.ROUTE_DASHBOARD, component: DashboardComponent },
-  { path: _utils.ROUTE_STAFF, component: StaffComponent },
-  { path: _utils.ROUTE_STUDENTS, component: StudentsComponent },  
-  { path: _utils.ROUTE_BATCHES, component: BatchesComponent },
+  {
+    path: _utils.ROUTE_STAFF,
+    children: [
+      { path: '', component: StaffComponent },
+      { path: ":docId", component: UserProfileComponent },
+    ]
+  },
+  { path: _utils.ROUTE_STUDENTS, component: StudentsComponent },
+  {
+    path: _utils.ROUTE_BATCHES,
+    children: [
+      { path: '', component: BatchesComponent },
+      { path: ':docId', component: BatchDetailComponent },
+      { path: _utils.ROUTE_SEMESTERS + '/:docId', component: SemesterDetailComponent },
+    ]
+  },
   { path: _utils.ROUTE_SUBJECTS, component: SubjectsComponent },
   { path: _utils.ROUTE_MEDIA, component: MediaComponent },
   {
     path: _utils.ROUTE_MISCELLANOUS, component: MiscellanousComponent,
     children: [{ path: '', loadChildren: './../../miscellanous/miscellanous.module#MiscellanousModule' }]
   },
-  { path: _utils.ROUTE_USERPROFILE + "/:docId", component: UserProfileComponent },
+  // { path: _utils.ROUTE_USERPROFILE + "/:docId", component: UserProfileComponent },
   { path: _utils.ROUTE_FEEMODULE, component: FeeModuleComponent },
   { path: _utils.ROUTE_ROUTES, component: RoutesComponent }
 ];

@@ -24,14 +24,14 @@ export class UserProfileComponent implements OnInit {
 
   qualifications: Qualification[];
   experiences: Experience[];
-  
+
   firstName: string;
   lastName: string;
   email: string;
   password: string;
   mobile: string;
   address: string;
-  birthDate: any;
+  birthDate: Date = new Date();
   department: any;
   designation: any;
   profileImage: any;
@@ -40,7 +40,6 @@ export class UserProfileComponent implements OnInit {
   role: number = 1;
   gender: number;
   salutation: number;
-  keys1: any[];       // from qualification array
 
   date: Date;
   personalInformationLoader: boolean = false;
@@ -50,7 +49,7 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private dbRef: AngularFirestore,
     private storageRef: AngularFireStorage,
-    private miscs: MiscellanousService,
+    public miscs: MiscellanousService,
     private router: ActivatedRoute,
     private snackbar: MatSnackBar
   ) { }
@@ -78,9 +77,6 @@ export class UserProfileComponent implements OnInit {
         this.email = this.user.email;
         this.mobile = this.user.mobile;
         this.profileImageUrl = this.user.profileImage;
-
-        this.keys1 = Object.keys(this.qualifications[0]);
-        this.keys1[this.keys1.length - 1] = 'actions';
       });
   }
 
@@ -118,14 +114,15 @@ export class UserProfileComponent implements OnInit {
         this.personalInformationLoader = false;
         (<HTMLInputElement>document.getElementById('profileImage')).value = null;
         this.snackbar.open("Personal Information Updated Successfully", "", {
-          duration: 3000
+          duration: 2500,
+          panelClass: ['success']
         });
       })
       .catch(() => {
         this.personalInformationLoader = false;
         this.snackbar.open("Something went wrong !! Please try again", "", {
-          duration: 3000,
-          panelClass: "bg-danger"
+          duration: 2500,
+          panelClass: ['warning']
         });
       })
   }
@@ -141,15 +138,16 @@ export class UserProfileComponent implements OnInit {
       }
       if(qual.qualificationName == undefined || qual.qualificationYear == undefined) {
         this.snackbar.open("Name or Year or Image is not entered in one of the qualification " + (this.qualifications.indexOf(qual) + 1).toString(), "", {
-          duration: 3000
+          duration: 2500,
+          panelClass: ['success']
         });
         this.qualificationLoader = false;
         return;
       }
     }
 
-    for(let qual of this.qualifications) {      
-      if (qual.certificate == undefined) {        
+    for(let qual of this.qualifications) {
+      if (qual.certificate == undefined) {
         if (qual.certificateImageUrl != null || qual.certificateImageUrl != "") {
           finalQual.push({ ...qual });
         }
@@ -181,14 +179,15 @@ export class UserProfileComponent implements OnInit {
       .then(() => {
         this.qualificationLoader = false;
         this.snackbar.open("Qualification Updated Successfully", "", {
-          duration: 3000
+          duration: 2500,
+          panelClass: ['success']
         });
       })
       .catch(() => {
         this.qualificationLoader = false;
         this.snackbar.open("Something went wrong !! Please try again", "", {
-          duration: 3000,
-          panelClass: "bg-danger"
+          duration: 2500,
+          panelClass: ['warning']
         });
       });
   }
@@ -206,11 +205,12 @@ export class UserProfileComponent implements OnInit {
       }
       if(exp.experienceName == undefined || exp.startDate == null || exp.endDate == null) {
         this.snackbar.open("Name or Starting Date or Ending Date is not entered in one of the experience " + (this.experiences.indexOf(exp) + 1).toString(), "", {
-          duration: 3000
+          duration: 2500,
+          panelClass: ['success']
         });
         this.experiencesLoader = false;
         return;
-      } 
+      }
     }
 
     for(let exp of this.experiences) {
@@ -248,14 +248,15 @@ export class UserProfileComponent implements OnInit {
       .then(() => {
         this.experiencesLoader = false;
         this.snackbar.open("Experiences Updated Successfully", "", {
-          duration: 3000
+          duration: 2500,
+          panelClass: ['success']
         });
       })
       .catch(() => {
         this.experiencesLoader = false;
         this.snackbar.open("Something went wrong !! Please try again", "", {
-          duration: 3000,
-          panelClass: "bg-danger"
+          duration: 2500,
+          panelClass: ['warning']
         });
       });
 
@@ -269,9 +270,6 @@ export class UserProfileComponent implements OnInit {
     } else {
       this.qualifications.push({ ...obj });
     }
-
-    console.log(this.qualifications, "added");
-    
   }
 
   addExperience() {

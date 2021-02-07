@@ -53,24 +53,24 @@ export class AddRoutesComponent implements OnInit {
     // }
     if (this.from == undefined || this.from == "") {
       this.snackbar.open("Starting Point Required", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       return;
     }
     if (this.to == undefined || this.to == "") {
       this.snackbar.open("Ending Point Required", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       return;
     }
 
     if (this.fee == undefined || this.fee == 0) {
       this.snackbar.open("Route Fee Required or Route fee greater than 0", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       return;
     }
 
@@ -81,7 +81,6 @@ export class AddRoutesComponent implements OnInit {
       'from': this.from.toLowerCase(),
       'to': this.to.toLowerCase(),
       'fee': this.fee,
-      'active': true,
       'createdOn': this.updating ? this.createdOn : new Date() ,
       'updateOn': new Date()
     };
@@ -91,7 +90,10 @@ export class AddRoutesComponent implements OnInit {
       .set(routeObj, { merge: true })
       .then(() => {
         this.dialogRef.close();
-        this.toast.success('Changes Done Successfully', '');
+        this.snackbar.open('Changes Done Successfully', '', {
+          duration: 2500,
+          panelClass: ['success']
+        });
       })
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToastrService } from 'ngx-toastr';
 import { Miscellanous } from '../Utils/miscellanous.model';
 import * as _utils from '../Utils/utils';
@@ -16,7 +17,7 @@ export class MiscellanousService {
 
   constructor(
     private dbRef: AngularFirestore,
-    private toast: ToastrService
+    private snackbar: MatSnackBar,
   ) {
     this.getMiscellanousDataOnName(0)
       .subscribe(response => { this.departments = response.map(e => ({ ...e.payload.doc.data() as Miscellanous })) });
@@ -37,8 +38,14 @@ export class MiscellanousService {
     this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(collection)
       .doc(docId)
       .set({ active: status }, { merge: true })
-      .then(() => this.toast.success('', 'Active Status Updated'))
-      .catch(err => this.toast.warning('', 'Something Went Wrong'));
+      .then(() => this.snackbar.open('Active Status Updated Successfully', '', {
+        duration: 2500,
+        panelClass: ['success']
+      }))
+      .catch(err => this.snackbar.open('Something went wrong!! Please try againg.', '', {
+          duration: 2500,
+          panelClass: ['warning']
+        }));
   }
 
 
@@ -51,16 +58,28 @@ export class MiscellanousService {
     this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_MISCELLANEOUS)
       .doc(data.docId)
       .set(data, { merge: true })
-      .then(() => this.toast.success('', 'Changes Done Successfully'))
-      .catch(err => this.toast.warning('', 'Something Went Wrong'));
+      .then(() => this.snackbar.open('Changes Done Successfully', '', {
+        duration: 2500,
+        panelClass: ['success']
+      }))
+      .catch(err => this.snackbar.open('Something went wrong!! Please try againg.', '', {
+          duration: 2500,
+          panelClass: ['warning']
+        }));
   }
 
   deleteData(docId) {
     this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_MISCELLANEOUS)
       .doc(docId)
       .delete()
-      .then(() => this.toast.success('', 'Deleted Successfully'))
-      .catch(err => this.toast.warning('', 'Something Went Wrong'));
+      .then(() => this.snackbar.open('Deleted Successfully', '', {
+        duration: 2500,
+        panelClass: ['success']
+      }))
+      .catch(err => this.snackbar.open('Something went wrong!! Please try againg.', '', {
+          duration: 2500,
+          panelClass: ['warning']
+        }));
   }
 
   getMiscellanousDataOnCreatedDate(type: number): any {

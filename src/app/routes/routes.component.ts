@@ -23,11 +23,13 @@ export class RoutesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dbRef.collection(`${_utils.MAIN}/${_utils.MAIN}/${_utils.COLLECTION_ROUTES}`)
+    if (this.appStore.busRoutes.length == 0) {
+      this.dbRef.collection(`${_utils.MAIN}/${_utils.MAIN}/${_utils.COLLECTION_ROUTES}`)
       .snapshotChanges()
       .subscribe(response => {
         this.appStore.busRoutes = response.map(route => ({ ...route.payload.doc.data() as Routes }))
       })
+    }
   }
 
   openDialog(type, routeObj?) {

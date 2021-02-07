@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToastrService } from 'ngx-toastr';
-import { FeeComponents, FeeStructure } from './../../Utils/fee-structure';
+import { FeeComponents, FeeStructure } from '../../Utils/fee-structure.model';
 import * as _utils from './../../Utils/utils';
 
 @Component({
@@ -26,7 +26,7 @@ export class AddFeeComponent implements OnInit {
     private snackbar: MatSnackBar,
     private toast: ToastrService
   ) {
-    
+
     this.viewing = data['viewing'];
     if(data['feeObj'] != null) {
       this.name = data['feeObj']['name'];
@@ -34,7 +34,7 @@ export class AddFeeComponent implements OnInit {
       this.total = data['feeObj']['total'];
       this.documentId = data['feeObj']['docId'];
       this.calculateTotalFee();
-      
+
     }
    }
 
@@ -45,17 +45,17 @@ export class AddFeeComponent implements OnInit {
   addFeeStructure() {
     if(this.name == undefined || this.name == "") {
       this.snackbar.open("First Name  Required", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       return;
     }
 
     if(this.detailsArray == undefined || this.detailsArray.length == 0) {
       this.snackbar.open("At least add one fee component", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       return;
     } else {
       for(let fee of this.detailsArray) {
@@ -75,7 +75,6 @@ export class AddFeeComponent implements OnInit {
       'name': this.name.toLowerCase(),
       'total': this.total,
       'feeComponents': this.detailsArray.map(e => ({ name: e.name.toLowerCase(), amount: e.amount })),
-      'active': true,
       'createdOn': new Date(),
       'updatedOn': new Date()
     };
@@ -84,8 +83,11 @@ export class AddFeeComponent implements OnInit {
       .doc(docId)
       .set(feeObj, { merge: true })
       .then(() => {
-        this.toast.success("Fee Structure Added", "Successfully");
         this.dialog.closeAll();
+        this.snackbar.open('Fee Structureed Successfully', '', {
+          duration: 2500,
+          panelClass: ['success']
+        });
       })
       .catch((err) => this.snackbar.open(err, "", {duration: 6000}));
   }

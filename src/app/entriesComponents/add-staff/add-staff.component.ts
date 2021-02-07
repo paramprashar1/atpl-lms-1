@@ -52,7 +52,7 @@ export class AddStaffComponent implements OnInit {
   constructor(
     private snackbar: MatSnackBar,
     private dialog: MatDialog,
-    private miscs: MiscellanousService,
+    public miscs: MiscellanousService,
     private dbRef: AngularFirestore,
     private authRef: AngularFireAuth,
     private storageRef: AngularFireStorage,
@@ -71,54 +71,54 @@ export class AddStaffComponent implements OnInit {
     this.loading = true;
     if (this.firstName == undefined || this.firstName == "") {
       this.snackbar.open("First Name  Required", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
 
     if (this.address == undefined && this.address?.length <= 1) {
       this.snackbar.open("Address required", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
 
     if (!this.email.includes("@") || !this.email.includes(".")) {
       this.snackbar.open("Invalid Email ", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
 
     if (this.email.substr(0, this.email.indexOf('@gmail.com')) == "") {
       this.snackbar.open("Invalid Username in Email ", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
 
     if (this.role == undefined && this.role == null) {
       this.snackbar.open("Please Select Role", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
 
     if (this.gender == undefined) {
       this.snackbar.open("Gender is required ", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
@@ -189,7 +189,6 @@ export class AddStaffComponent implements OnInit {
           address: this.address,
           docId: documentId,
           authId: auth.user.uid,
-          active: true,
           birthDate: this.birthDate || null,
           department: this.role == 1 ? this.department['name'] : "",
           designation: this.role == 1 ? this.designation['name'] : "",
@@ -207,7 +206,10 @@ export class AddStaffComponent implements OnInit {
 
         this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_STAFF).doc(documentId)
           .set(userObject, { merge: true })
-          .then(() => this.toast.success("Staff Added", "Successfully"));
+          .then(() => this.snackbar.open('Staff Added Successfully', '', {
+            duration: 2500,
+            panelClass: ['success']
+          }));
         this.loading = false;
         this.dialog.closeAll();
       })
@@ -402,7 +404,6 @@ export class AddStaffComponent implements OnInit {
           this.qualifications[this.qualifications.findIndex(x => x == qual)].certificateImageUrl = "";
         }
       }
-      console.log(this.qualifications);
     }
 
   }

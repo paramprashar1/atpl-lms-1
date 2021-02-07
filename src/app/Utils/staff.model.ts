@@ -22,7 +22,7 @@ export class Staff {
     qualifications: Qualification[];
     experiences: Experience[];
     
-    active: boolean;
+    active?: boolean;
     
     birthDate: Date;
     lastLogin: Date;

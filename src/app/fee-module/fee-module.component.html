@@ -23,6 +23,7 @@
                         <th>Name</th>
                         <th>Total</th>
                         <th>Created On</th>
+                        <th>Active</th>
                         <th>Actions</th>
                     </thead>
                     <tbody>
@@ -30,7 +31,12 @@
                             <td>{{ idx + 1 }}</td>
                             <td>{{ fee.name | titlecase }}</td>
                             <td>{{ fee.total }}</td>
-                            <td>{{ fee.createdOn.toDate() | date: 'yyyy-MM-dd, hh:mm:ss aa' }}</td>
+                            <td>{{ fee.createdOn['seconds'] * 1000 | date: 'yyyy-MM-dd, hh:mm:ss aa' }}</td>
+                            <td>
+                                <mat-slide-toggle color="primary" class="mb-2" [checked]="fee.active"
+                                    (change)="updateActiveStatus(fee.docId, $event.checked)">
+                                </mat-slide-toggle>
+                            </td>
                             <td>
                                 <button mat-icon-button class="text-primary" title="View Fee Components"
                                     (click)="openFeeDialog('VIEW', fee)">

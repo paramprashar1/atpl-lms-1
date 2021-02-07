@@ -6,9 +6,10 @@ export const HYPHEN = '-';
 
 // Collections
 export const COLLECTION_STAFF = 'staff' + HYPHEN + MAIN;
-export const COLLECTION_BATCHES = 'batches' + HYPHEN + MAIN;
 export const COLLECTION_STUDENTS = 'students' + HYPHEN + MAIN;
-export const COLLECTION_SEMESTERS = 'semester' + HYPHEN + MAIN;
+export const COLLECTION_BATCHES = 'batches' + HYPHEN + MAIN;
+export const COLLECTION_SEMESTERS = 'semesters' + HYPHEN + MAIN;
+export const COLLECTION_SUBJECTS = 'subjects' + HYPHEN + MAIN;
 export const COLLECTION_ATTENDANCE = 'attendance' + HYPHEN + MAIN;
 export const COLLECTION_MEDIA = 'media' + HYPHEN + MAIN;
 export const COLLECTION_MISCELLANEOUS = 'miscellanous' + HYPHEN + MAIN;
@@ -23,10 +24,11 @@ export const COLLECTION_ROUTES = 'routes' + HYPHEN + MAIN;
 
 // Routes
 export const ROUTE_DASHBOARD = 'dashboard';
-export const ROUTE_STAFF = 'staffs';
-export const ROUTE_BATCHES = 'batches';
-export const ROUTE_STUDENTS = 'students';
+export const ROUTE_STAFF = 'staff';
+export const ROUTE_BATCHES = 'batch';
+export const ROUTE_STUDENTS = 'student';
 export const ROUTE_SUBJECTS = 'subjects';
+export const ROUTE_SEMESTERS = 'semester';
 export const ROUTE_MEDIA = 'media';
 export const ROUTE_MISCELLANOUS = 'miscellanous';
 export const ROUTE_ROLES = 'roles';
@@ -47,6 +49,7 @@ export const LABEL_STAFF = 'STAFF';
 export const LABEL_BATCHES = 'BATCHES';
 export const LABEL_STUDENTS = 'STUDENT';
 export const LABEL_SUBJECTS = 'SUBJECTS';
+export const LABEL_SEMESTERS = 'semesters';
 export const LABEL_MEDIA = 'MEDIA';
 export const LABEL_MISCELLANOUS = 'MISCELLANOUS';
 export const LABEL_ROLES = 'ROLES';

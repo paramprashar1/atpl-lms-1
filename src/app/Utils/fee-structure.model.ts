@@ -8,7 +8,7 @@ export class FeeStructure {
     name: string;
     feeComponents: FeeComponents[];
     total: number;
-    active: boolean;
+    active?: boolean;
     createdOn: Date;
     updatedOn: Date;
 }

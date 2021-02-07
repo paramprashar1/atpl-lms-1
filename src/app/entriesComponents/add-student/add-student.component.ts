@@ -71,11 +71,11 @@ export class AddStudentComponent implements OnInit {
       this.salutation = this.stdObj.salutation;
       this.appointmentDate = new Date();
       if(this.stdObj.followUpDate != null){
-        if(this.datepipe.transform(this.appointmentDate, 'yyyy-MM-dd') == this.datepipe.transform(this.stdObj.followUpDate['seconds'] * 1000, 'yyyy-MM-dd')) {
+        if(this.datepipe.transform(this.appointmentDate, 'yyyy-MM-dd') >= this.datepipe.transform(this.stdObj.followUpDate['seconds'] * 1000, 'yyyy-MM-dd')) {
           this.status = 1;
-        } else {
-          this.status = this.stdObj.status;
         }
+      } else {
+        this.status = this.stdObj.status;
       }
 
     } else {
@@ -94,63 +94,63 @@ export class AddStudentComponent implements OnInit {
     this.loading = true;
     if (this.name == undefined || this.name == "") {
       this.snackbar.open("First Name  Required", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
 
     if (this.fatherName == undefined || this.fatherName == "") {
       this.snackbar.open("First Name  Required", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
 
     if (this.address == undefined && this.address?.length <= 1) {
       this.snackbar.open("Address required", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
 
     if (!this.email.includes("@") || !this.email.includes(".")) {
       this.snackbar.open("Email Invalid ", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
 
     if (!this.fatherEmail.includes("@") || !this.fatherEmail.includes(".")) {
       this.snackbar.open("Father Email Invalid ", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
 
     if (this.gender == undefined) {
       this.snackbar.open("Gender is required ", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
 
     if (this.birthDate == undefined) {
       this.snackbar.open("Date of Birth is required ", "", {
-        duration: 2000,
-        panelClass: ['warning']
-      });
+          duration: 2500,
+          panelClass: ['warning']
+        });
       this.loading = false;
       return;
     }
@@ -187,20 +187,24 @@ export class AddStudentComponent implements OnInit {
       followUpDate: this.followUpDate || null,
       address: this.address || "",
       remarks: this.remarks || "",
-      active: true,
       createdOn: new Date(),
       updatedOn: new Date(),
     };
     this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_STUDENTS).doc(docKey)
       .set(stdObj, { merge: true })
       .then(() => {
-        this.toast.success("Added Successfully");
+        this.snackbar.open('Added Successfully', '', {
+          duration: 2500,
+          panelClass: ['success']
+        })
         this.loading = false;
         this.dialogRef.close();
       })
       .catch((err) => {
-        console.log(">>> error: ", err);
-        this.toast.error("Something Went Wrong");
+        this.snackbar.open("Next Date is required ", "", {
+          duration: 2500,
+          panelClass: ['warning']
+        });
         this.loading = false;
       })
   }
@@ -210,7 +214,7 @@ export class AddStudentComponent implements OnInit {
     if(this.status == 1) {
       if(this.followUpDate == null) {
         this.snackbar.open("Next Date is required ", "", {
-          duration: 2000,
+          duration: 2500,
           panelClass: ['warning']
         });
         this.loading = false;
@@ -245,13 +249,18 @@ export class AddStudentComponent implements OnInit {
     this.dbRef.collection(_utils.MAIN).doc(_utils.MAIN).collection(_utils.COLLECTION_STUDENTS).doc(this.docId)
       .update(stdObj)
       .then(() => {
-        this.toast.success("Updated Successfully");
+        this.snackbar.open('Updated Successfully', '', {
+          duration: 2500,
+          panelClass: ['success']
+        })
         this.loading = false;
         this.dialogRef.close();
       })
       .catch((err) => {
-        console.log(">>> error: ", err);
-        this.toast.error("Something Went Wrong");
+        this.snackbar.open("Next Date is required ", "", {
+          duration: 2500,
+          panelClass: ['warning']
+        });
         this.loading = false;
       })
   }

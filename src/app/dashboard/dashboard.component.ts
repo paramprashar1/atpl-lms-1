@@ -40,11 +40,9 @@ export class DashboardComponent implements OnInit {
   public lineChartGradientsNumbersColors: Array<any>
   // events
   public chartClicked(e: any): void {
-    console.log(e);
   }
 
   public chartHovered(e: any): void {
-    console.log(e);
   }
   public hexToRGB(hex, alpha) {
     var r = parseInt(hex.slice(1, 3), 16),

@@ -6,7 +6,6 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { BatchesComponent } from '../../batches/batches.component';
 import { MediaComponent } from '../../media/media.component';
-import { MiscellanousComponent } from '../../miscellanous/miscellanous.component';
 import { StaffComponent } from '../../staff/staff.component';
 import { StudentsComponent } from '../../students/students.component';
 import { SubjectsComponent } from '../../subjects/subjects.component';
@@ -17,6 +16,9 @@ import { MaterialModule } from '../../material.module';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { FeeModuleComponent } from '../../fee-module/fee-module.component';
 import { RoutesComponent } from '../../routes/routes.component';
+import { BatchDetailComponent } from '../../batch-detail/batch-detail.component';
+import { MiscellanousComponent } from '../../miscellanous/miscellanous.component';
+import { SemesterDetailComponent } from '../../semester-detail/semester-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { RoutesComponent } from '../../routes/routes.component';
     StaffComponent,
     UserProfileComponent,
     FeeModuleComponent,
-    RoutesComponent
+    RoutesComponent,
+    BatchDetailComponent,
+    SemesterDetailComponent
   ],
   imports: [
     CommonModule,

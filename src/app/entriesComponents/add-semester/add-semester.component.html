@@ -1,0 +1,50 @@
+<button class="btn btn-link pull-right m-0 p-0" mat-dialog-close>
+  <mat-icon>clear</mat-icon>
+</button>
+<h4 mat-dialog-title>Add Semester</h4>
+
+<mat-dialog-content class="mat-typography">
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>Semester Name</mat-label>
+      <input type="text" matInput name="name" [(ngModel)]="name">
+    </mat-form-field>
+    <mat-form-field class="col">
+      <mat-label>Batch Name</mat-label>
+      <input type="text" matInput name="batchName" [(ngModel)]="batchName" disabled>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>Starting Date</mat-label>
+      <input matInput [matDatepicker]="picker" name="startingDate" [(ngModel)]="startingDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="col">
+      <mat-label>Ending Date</mat-label>
+      <input matInput [matDatepicker]="picker1" name="endingDate" [(ngModel)]="endingDate">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="col">
+      <mat-label>Select Fee Structure</mat-label>
+      <mat-select name="feeStructure" [(ngModel)]="feeStructure">
+        <mat-option *ngFor="let fee of appStore.feeStructures" [disabled]="!fee.active" [value]="fee">
+          {{ fee.name | titlecase }} - &#8377;{{ fee.total }}
+        </mat-option>
+      </mat-select>
+      <button class="ml-2" mat-icon-button matSuffix [disabled]="feeStructure == undefined"
+        (click)="openFeeModal($event)" matTooltip="View Fee Structure">
+        <mat-icon style="font-size: 24px;">segment</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="col p-0">
+    <button type="button" mat-button class="default no-hover-effect float-right" (click)="addSemester()">
+        Submit
+    </button>
+</div>
+</mat-dialog-content>

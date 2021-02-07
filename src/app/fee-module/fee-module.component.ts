@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddFeeComponent } from '../entriesComponents/add-fee/add-fee.component';
 import { DeleteModalComponent } from '../entriesComponents/delete-modal/delete-modal.component';
 import { AppStoreService } from '../services/app-store.service';
-import { FeeStructure } from '../Utils/fee-structure';
+import { MiscellanousService } from '../services/miscellanous.service';
+import { FeeStructure } from '../Utils/fee-structure.model';
 import * as _utils from './../Utils/utils';
 
 @Component({
@@ -16,16 +17,19 @@ export class FeeModuleComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private appStore: AppStoreService,
-    private dbRef: AngularFirestore
+    public appStore: AppStoreService,
+    private dbRef: AngularFirestore,
+    private miscs: MiscellanousService
   ) { }
 
   ngOnInit(): void {
-    this.dbRef.collection(`${_utils.MAIN}/${_utils.MAIN}/${_utils.COLLECTION_FEESTRUCTURES}`, ref => ref.orderBy('createdOn', 'desc'))
+    if (this.appStore.feeStructures.length == 0) {
+      this.dbRef.collection(`${_utils.MAIN}/${_utils.MAIN}/${_utils.COLLECTION_FEESTRUCTURES}`, ref => ref.orderBy('createdOn', 'desc'))
       .snapshotChanges()
       .subscribe((response) => {
         this.appStore.feeStructures = response.map(e => ({ ...e.payload.doc.data() as FeeStructure }));
       })
+    }
   }
 
   deleteFeeStructure(docId) {
@@ -35,6 +39,10 @@ export class FeeModuleComponent implements OnInit {
         'collection': _utils.COLLECTION_FEESTRUCTURES
       }
     });
+  }
+
+  updateActiveStatus(docId, status) {
+    this.miscs.updateActiveStatus(docId, _utils.COLLECTION_FEESTRUCTURES, status);
   }
 
   openFeeDialog(type: string, feeObj?) {
@@ -67,7 +75,7 @@ export class FeeModuleComponent implements OnInit {
         break;
       }
     }
-    
+
   }
 
 }

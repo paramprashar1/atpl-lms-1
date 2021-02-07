@@ -9,7 +9,5 @@ import { MiscellanousService } from './services/miscellanous.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(
-    private mis: MiscellanousService
-  ) { }
+  constructor() { }
 }

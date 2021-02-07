@@ -21,25 +21,27 @@ import { MaterialModule } from './material.module';
 import { DeleteModalComponent } from './entriesComponents/delete-modal/delete-modal.component';
 import { ViewImageModalComponent } from './entriesComponents/view-image-modal/view-image-modal.component';
 import { AppStoreService } from './services/app-store.service';
-import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { AddStaffComponent } from './entriesComponents/add-staff/add-staff.component';
 import { AddStudentComponent } from './entriesComponents/add-student/add-student.component';
 import { AddFeeComponent } from './entriesComponents/add-fee/add-fee.component';
 import { AddRoutesComponent } from './entriesComponents/add-routes/add-routes.component';
+import { AddBatchComponent } from './entriesComponents/add-batch/add-batch.component';
+import { AddSemesterComponent } from './entriesComponents/add-semester/add-semester.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    StudentProfileComponent,
 
     // Dialogs Component
+    ViewImageModalComponent,
+    DeleteModalComponent,
     AddStaffComponent,
     AddStudentComponent,
     AddFeeComponent,
     AddRoutesComponent,
-    DeleteModalComponent,
-    ViewImageModalComponent,
+    AddBatchComponent,
+    AddSemesterComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -64,12 +66,14 @@ import { AddRoutesComponent } from './entriesComponents/add-routes/add-routes.co
     MaterialModule,
   ],
   entryComponents: [
+    DeleteModalComponent,
+    ViewImageModalComponent,
     AddFeeComponent,
     AddStaffComponent,
     AddStudentComponent,
     AddRoutesComponent,
-    DeleteModalComponent,
-    ViewImageModalComponent,
+    AddBatchComponent,
+    AddSemesterComponent
   ],
   providers: [
     AppStoreService,

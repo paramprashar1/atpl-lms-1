@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Miscellanous } from './../../Utils/miscellanous.model';
 import * as _utils from './../../Utils/utils';
 import { MiscellanousService } from './../../services/miscellanous.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-roles',
@@ -17,8 +18,8 @@ export class RolesComponent implements OnInit {
 
   constructor(
     private miscs: MiscellanousService,
-    private toast: ToastrService
-  ) { } 
+    private snackbar: MatSnackBar,
+  ) { }
 
   ngOnInit(): void {
     if ( this.miscs.roles.length == 0) {
@@ -33,7 +34,10 @@ export class RolesComponent implements OnInit {
 
   pushDataToFirestore() {
     if (this.roleName == null) {
-      this.toast.warning('Required Value', 'Warning')
+      this.snackbar.open('Value Requried', '', {
+        duration: 2500,
+        panelClass: ['warning']
+      });
     } else {
       let data = {};
       data['name'] = this.roleName.toLowerCase();
@@ -49,10 +53,9 @@ export class RolesComponent implements OnInit {
             this.miscs.addMiscellanousDataToFirestore(data);
             this.roleName = null;
           } else {
-            this.toast.warning('Same Entry Already Exist', 'Warning', {
-              enableHtml: true,
-              toastClass: "alert w-25",
-              positionClass: 'toast-top-right'
+            this.snackbar.open('Same Entry Alreay Exists', '', {
+              duration: 2500,
+              panelClass: ['warning']
             });
             document.getElementById('roleName').focus();
           }
